@@ -1,5 +1,6 @@
 package com.iiitb.trello.model;
 
+import com.iiitb.trello.model.entities.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,15 +10,15 @@ import java.util.List;
 
 public class CustomUserDetails implements UserDetails {
 
-    private User user;
+    private final UserEntity user;
 
-    public CustomUserDetails(User user) {
+    public CustomUserDetails(UserEntity user) {
         this.user = user;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-       SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
+       SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("user.getRole()");
 
         return List.of(simpleGrantedAuthority);
     }
@@ -29,7 +30,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getEmail();
     }
 
     @Override
