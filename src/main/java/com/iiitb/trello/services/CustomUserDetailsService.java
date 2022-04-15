@@ -1,7 +1,7 @@
 package com.iiitb.trello.services;
 
 import com.iiitb.trello.model.CustomUserDetails;
-import com.iiitb.trello.model.User;
+import com.iiitb.trello.model.entities.UserEntity;
 import com.iiitb.trello.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,9 +16,9 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        final User user = this.userRepository.findByUsername(username);
+        final UserEntity user = this.userRepository.findByEmail(email);
 
         if(user == null){
             throw new UsernameNotFoundException("Not found");
