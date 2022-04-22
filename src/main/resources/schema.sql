@@ -34,7 +34,8 @@ ALTER TABLE `TaskStatus` ADD FOREIGN KEY `FK_TaskStatus_Board` (`BoardId`) REFER
 
 CREATE TABLE `Task` (
                         `Id` BIGINT PRIMARY KEY,
-                        `Name` VARCHAR(50) NOT NULL,
+                        `BoardId` BIGINT NOT NULL,
+                        `Name` VARCHAR(100) NOT NULL,
                         `Description` VARCHAR(5000) NOT NULL,
                         `TaskStatusId` BIGINT NOT NULL,
                         `IsActive` BIT NOT NULL,
@@ -44,6 +45,7 @@ CREATE TABLE `Task` (
                         `LastChangeBy` BIGINT NOT NULL
 );
 
+ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_Board` (`BoardId`) REFERENCES `Board` (`Id`);
 ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_User_CreatedBy` (`CreatedBy`) REFERENCES `User` (`Id`);
 ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_User_LastChangeBy` (`LastChangeBy`) REFERENCES `User` (`Id`);
 ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_TaskStatus` (`TaskStatusId`) REFERENCES `TaskStatus` (`Id`);
@@ -81,5 +83,3 @@ CREATE TABLE `UserPermissionBoard`(
 ALTER TABLE `UserPermissionBoard` ADD FOREIGN KEY `FK_UserPermissionBoard_User` (`UserId`) REFERENCES `User` (`Id`);
 ALTER TABLE `UserPermissionBoard` ADD FOREIGN KEY `FK_UserPermissionBoard_Board` (`BoardId`) REFERENCES `Board` (`Id`);
 CREATE UNIQUE INDEX `UIX_UserPermissionBoard_BoardId_UserId` ON `UserPermissionBoard`(`BoardId`, `UserId`);
-
-
