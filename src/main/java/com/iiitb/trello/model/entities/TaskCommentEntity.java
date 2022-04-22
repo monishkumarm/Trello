@@ -10,7 +10,7 @@ public class TaskCommentEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "Id")
-    private long id;
+    private Long id;
     @Basic
     @Column(name = "Comment")
     private String comment;
@@ -24,17 +24,17 @@ public class TaskCommentEntity {
     @Column(name = "CreatedOn")
     private Timestamp createdOn;
     @ManyToOne
-    @JoinColumn(name = "TaskId", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "TaskId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private TaskEntity taskByTaskId;
     @ManyToOne
-    @JoinColumn(name = "UserId", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "UserId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private UserEntity userByUserId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -75,7 +75,7 @@ public class TaskCommentEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaskCommentEntity that = (TaskCommentEntity) o;
-        return id == that.id && Objects.equals(comment, that.comment) && Objects.equals(taskId, that.taskId) && Objects.equals(userId, that.userId) && Objects.equals(createdOn, that.createdOn);
+        return Objects.equals(id, that.id) && Objects.equals(comment, that.comment) && Objects.equals(taskId, that.taskId) && Objects.equals(userId, that.userId) && Objects.equals(createdOn, that.createdOn);
     }
 
     @Override

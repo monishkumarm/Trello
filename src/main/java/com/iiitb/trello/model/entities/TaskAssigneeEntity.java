@@ -9,7 +9,7 @@ public class TaskAssigneeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "Id")
-    private long id;
+    private Long id;
     @Basic
     @Column(name = "TaskId")
     private Long taskId;
@@ -17,17 +17,17 @@ public class TaskAssigneeEntity {
     @Column(name = "UserId")
     private Long userId;
     @ManyToOne
-    @JoinColumn(name = "TaskId", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "TaskId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private TaskEntity taskByTaskId;
     @ManyToOne
-    @JoinColumn(name = "UserId", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "UserId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private UserEntity userByUserId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -52,7 +52,7 @@ public class TaskAssigneeEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaskAssigneeEntity that = (TaskAssigneeEntity) o;
-        return id == that.id && Objects.equals(taskId, that.taskId) && Objects.equals(userId, that.userId);
+        return Objects.equals(id, that.id) && Objects.equals(taskId, that.taskId) && Objects.equals(userId, that.userId);
     }
 
     @Override

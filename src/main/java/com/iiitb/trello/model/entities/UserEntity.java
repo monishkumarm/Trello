@@ -11,7 +11,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "Id")
-    private long id;
+    private Long id;
     @Basic
     @Column(name = "FullName")
     private String fullName;
@@ -42,12 +42,14 @@ public class UserEntity {
     private Collection<TaskAssigneeEntity> taskAssigneesById;
     @OneToMany(mappedBy = "userByUserId")
     private Collection<TaskCommentEntity> taskCommentsById;
+    @OneToMany(mappedBy = "userByUserId")
+    private Collection<UserPermissionBoardEntity> userPermissionBoardsById;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -104,7 +106,7 @@ public class UserEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserEntity that = (UserEntity) o;
-        return id == that.id && Objects.equals(fullName, that.fullName) && Objects.equals(email, that.email) && Objects.equals(timeZoneId, that.timeZoneId) && Objects.equals(password, that.password) && Objects.equals(isActive, that.isActive) && Objects.equals(createdOn, that.createdOn);
+        return Objects.equals(id, that.id) && Objects.equals(fullName, that.fullName) && Objects.equals(email, that.email) && Objects.equals(timeZoneId, that.timeZoneId) && Objects.equals(password, that.password) && Objects.equals(isActive, that.isActive) && Objects.equals(createdOn, that.createdOn);
     }
 
     @Override
@@ -158,5 +160,13 @@ public class UserEntity {
 
     public void setTaskCommentsById(Collection<TaskCommentEntity> taskCommentsById) {
         this.taskCommentsById = taskCommentsById;
+    }
+
+    public Collection<UserPermissionBoardEntity> getUserPermissionBoardsById() {
+        return userPermissionBoardsById;
+    }
+
+    public void setUserPermissionBoardsById(Collection<UserPermissionBoardEntity> userPermissionBoardsById) {
+        this.userPermissionBoardsById = userPermissionBoardsById;
     }
 }
