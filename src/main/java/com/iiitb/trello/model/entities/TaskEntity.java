@@ -11,7 +11,10 @@ public class TaskEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "Id")
-    private long id;
+    private Long id;
+    @Basic
+    @Column(name = "BoardId")
+    private Long boardId;
     @Basic
     @Column(name = "Name")
     private String name;
@@ -37,25 +40,36 @@ public class TaskEntity {
     @Column(name = "LastChangeBy")
     private Long lastChangeBy;
     @ManyToOne
-    @JoinColumn(name = "TaskStatusId", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "BoardId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    private BoardEntity boardByBoardId;
+    @ManyToOne
+    @JoinColumn(name = "TaskStatusId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private TaskStatusEntity taskStatusByTaskStatusId;
     @ManyToOne
-    @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private UserEntity userByCreatedBy;
     @ManyToOne
-    @JoinColumn(name = "LastChangeBy", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "LastChangeBy", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private UserEntity userByLastChangeBy;
     @OneToMany(mappedBy = "taskByTaskId")
     private Collection<TaskAssigneeEntity> taskAssigneesById;
     @OneToMany(mappedBy = "taskByTaskId")
     private Collection<TaskCommentEntity> taskCommentsById;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getBoardId() {
+        return boardId;
+    }
+
+    public void setBoardId(Long boardId) {
+        this.boardId = boardId;
     }
 
     public String getName() {
@@ -127,12 +141,20 @@ public class TaskEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaskEntity that = (TaskEntity) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(taskStatusId, that.taskStatusId) && Objects.equals(isActive, that.isActive) && Objects.equals(createdOn, that.createdOn) && Objects.equals(createdBy, that.createdBy) && Objects.equals(lastChangeOn, that.lastChangeOn) && Objects.equals(lastChangeBy, that.lastChangeBy);
+        return Objects.equals(id, that.id) && Objects.equals(boardId, that.boardId) && Objects.equals(name, that.name) && Objects.equals(description, that.description) && Objects.equals(taskStatusId, that.taskStatusId) && Objects.equals(isActive, that.isActive) && Objects.equals(createdOn, that.createdOn) && Objects.equals(createdBy, that.createdBy) && Objects.equals(lastChangeOn, that.lastChangeOn) && Objects.equals(lastChangeBy, that.lastChangeBy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, taskStatusId, isActive, createdOn, createdBy, lastChangeOn, lastChangeBy);
+        return Objects.hash(id, boardId, name, description, taskStatusId, isActive, createdOn, createdBy, lastChangeOn, lastChangeBy);
+    }
+
+    public BoardEntity getBoardByBoardId() {
+        return boardByBoardId;
+    }
+
+    public void setBoardByBoardId(BoardEntity boardByBoardId) {
+        this.boardByBoardId = boardByBoardId;
     }
 
     public TaskStatusEntity getTaskStatusByTaskStatusId() {

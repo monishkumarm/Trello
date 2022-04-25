@@ -10,7 +10,7 @@ public class TaskStatusEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "Id")
-    private long id;
+    private Long id;
     @Basic
     @Column(name = "BoardId")
     private Long boardId;
@@ -23,14 +23,14 @@ public class TaskStatusEntity {
     @OneToMany(mappedBy = "taskStatusByTaskStatusId")
     private Collection<TaskEntity> tasksById;
     @ManyToOne
-    @JoinColumn(name = "BoardId", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "BoardId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private BoardEntity boardByBoardId;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -63,7 +63,7 @@ public class TaskStatusEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TaskStatusEntity that = (TaskStatusEntity) o;
-        return id == that.id && Objects.equals(boardId, that.boardId) && Objects.equals(name, that.name) && Objects.equals(isActive, that.isActive);
+        return Objects.equals(id, that.id) && Objects.equals(boardId, that.boardId) && Objects.equals(name, that.name) && Objects.equals(isActive, that.isActive);
     }
 
     @Override

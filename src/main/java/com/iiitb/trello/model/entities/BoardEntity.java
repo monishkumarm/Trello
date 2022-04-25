@@ -11,7 +11,7 @@ public class BoardEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "Id")
-    private long id;
+    private Long id;
     @Basic
     @Column(name = "Name")
     private String name;
@@ -31,19 +31,23 @@ public class BoardEntity {
     @Column(name = "LastChangeBy")
     private Long lastChangeBy;
     @ManyToOne
-    @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private UserEntity userByCreatedBy;
     @ManyToOne
-    @JoinColumn(name = "LastChangeBy", referencedColumnName = "Id", insertable = false, updatable = false)
+    @JoinColumn(name = "LastChangeBy", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private UserEntity userByLastChangeBy;
     @OneToMany(mappedBy = "boardByBoardId")
+    private Collection<TaskEntity> tasksById;
+    @OneToMany(mappedBy = "boardByBoardId")
     private Collection<TaskStatusEntity> taskStatusesById;
+    @OneToMany(mappedBy = "boardByBoardId")
+    private Collection<UserPermissionBoardEntity> userPermissionBoardsById;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -100,7 +104,7 @@ public class BoardEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BoardEntity that = (BoardEntity) o;
-        return id == that.id && Objects.equals(name, that.name) && Objects.equals(isActive, that.isActive) && Objects.equals(createdOn, that.createdOn) && Objects.equals(createdBy, that.createdBy) && Objects.equals(lastChangeOn, that.lastChangeOn) && Objects.equals(lastChangeBy, that.lastChangeBy);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(isActive, that.isActive) && Objects.equals(createdOn, that.createdOn) && Objects.equals(createdBy, that.createdBy) && Objects.equals(lastChangeOn, that.lastChangeOn) && Objects.equals(lastChangeBy, that.lastChangeBy);
     }
 
     @Override
@@ -124,11 +128,27 @@ public class BoardEntity {
         this.userByLastChangeBy = userByLastChangeBy;
     }
 
+    public Collection<TaskEntity> getTasksById() {
+        return tasksById;
+    }
+
+    public void setTasksById(Collection<TaskEntity> tasksById) {
+        this.tasksById = tasksById;
+    }
+
     public Collection<TaskStatusEntity> getTaskStatusesById() {
         return taskStatusesById;
     }
 
     public void setTaskStatusesById(Collection<TaskStatusEntity> taskStatusesById) {
         this.taskStatusesById = taskStatusesById;
+    }
+
+    public Collection<UserPermissionBoardEntity> getUserPermissionBoardsById() {
+        return userPermissionBoardsById;
+    }
+
+    public void setUserPermissionBoardsById(Collection<UserPermissionBoardEntity> userPermissionBoardsById) {
+        this.userPermissionBoardsById = userPermissionBoardsById;
     }
 }
