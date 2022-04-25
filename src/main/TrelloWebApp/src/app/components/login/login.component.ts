@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
   onSubmit(){
 
     if(this.credentials.username != '' && this.credentials.password != ''){
+
       this.loginService.generateToken(this.credentials).subscribe(
         (response:any) => {
           console.log(response.token);

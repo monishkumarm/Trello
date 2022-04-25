@@ -1,0 +1,49 @@
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+
+
+        <div class="row"  *ngIf="showMsg">
+          <div class="col-xs-12">
+            <p class="alert alert-success">
+              <strong>Registration Success!</strong> Please go to Login Page for login!.
+
+            </p>
+          </div>
+        </div>
+
+
+        <h1 class="text-center">Signup!!</h1>
+
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field style="width: 100%;">
+            <mat-label style="color: black;">Full Name</mat-label>
+            <input name="fullName" [(ngModel)]="credentials.fullName" required type="text" matInput>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%;">
+            <mat-label style="color: black;">Email ID</mat-label>
+            <input name="email" [(ngModel)]="credentials.email" required type="text" matInput>
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%;">
+            <mat-label style="color: black;">Password</mat-label>
+            <input name="password" [(ngModel)]="credentials.password" required type="password" matInput>
+          </mat-form-field>
+
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary">
+              Signup
+            </button>
+
+            <button type="reset" mat-raised-button color="accent" style="margin-left: 15px;">
+              Reset
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.Optional;
+
+
 @RestController
 @CrossOrigin(origins = "*")
 public class JwtController {
@@ -28,14 +37,14 @@ public class JwtController {
 
     @RequestMapping(value = "/token", method = RequestMethod.POST)
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
-        try{
-            this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(), jwtRequest.getPassword()));
-        }
-        catch (UsernameNotFoundException e){
+        String hashed = getHashedPassword(helper(jwtRequest.getPassword()));
+
+        try {
+            this.authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(), hashed));
+        } catch (UsernameNotFoundException e) {
             e.printStackTrace();
             throw new Exception("Invalid credentials");
-        }
-        catch (BadCredentialsException e){
+        } catch (BadCredentialsException e) {
             e.printStackTrace();
             throw new Exception("Invalid credentials");
         }
@@ -45,5 +54,24 @@ public class JwtController {
         String token = this.jwtUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new JwtResponse(token));
-     }
+    }
+
+    public static byte[] helper(String s) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        return md.digest(s.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public static String getHashedPassword(byte[] hash) {
+        BigInteger number = new BigInteger(1, hash);
+
+        // Convert message digest into hex value
+        StringBuilder hexString = new StringBuilder(number.toString(16));
+
+        // Pad with leading zeros
+        while (hexString.length() < 32) {
+            hexString.insert(0, '0');
+        }
+
+        return hexString.toString();
+    }
 }
