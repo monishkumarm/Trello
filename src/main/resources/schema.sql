@@ -1,7 +1,7 @@
 USE Trello;
 
 CREATE TABLE `User` (
-                        `Id` BIGINT PRIMARY KEY,
+                        `Id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                         `FullName` VARCHAR(500) NOT NULL,
                         `Email` VARCHAR(320) NOT NULL UNIQUE,
                         `TimeZoneId` INT NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE `User` (
 );
 
 CREATE TABLE `Board` (
-                         `Id` BIGINT PRIMARY KEY,
+                         `Id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                          `Name` VARCHAR(50) NOT NULL,
                          `IsActive` BIT NOT NULL,
                          `CreatedOn` DATETIME NOT NULL,
@@ -24,7 +24,7 @@ ALTER TABLE `Board` ADD FOREIGN KEY `FK_Board_User_CreatedBy` (`CreatedBy`) REFE
 ALTER TABLE `Board` ADD FOREIGN KEY `FK_Board_User_LastChangeBy` (`LastChangeBy`) REFERENCES `User` (`Id`);
 
 CREATE TABLE `TaskStatus` (
-                              `Id` BIGINT PRIMARY KEY,
+                              `Id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                               `BoardId` BIGINT NOT NULL,
                               `Name` VARCHAR(50) NOT NULL,
                               `IsActive` BIT NOT NULL
@@ -33,7 +33,7 @@ CREATE TABLE `TaskStatus` (
 ALTER TABLE `TaskStatus` ADD FOREIGN KEY `FK_TaskStatus_Board` (`BoardId`) REFERENCES `Board` (`Id`);
 
 CREATE TABLE `Task` (
-                        `Id` BIGINT PRIMARY KEY,
+                        `Id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                         `BoardId` BIGINT NOT NULL,
                         `Name` VARCHAR(100) NOT NULL,
                         `Description` VARCHAR(5000) NOT NULL,
@@ -51,7 +51,7 @@ ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_User_LastChangeBy` (`LastChangeBy`) 
 ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_TaskStatus` (`TaskStatusId`) REFERENCES `TaskStatus` (`Id`);
 
 CREATE TABLE `TaskAssignee` (
-                                `Id` BIGINT PRIMARY KEY,
+                                `Id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                                 `TaskId` BIGINT NOT NULL,
                                 `UserId` BIGINT NOT NULL
 );
@@ -61,7 +61,7 @@ ALTER TABLE `TaskAssignee` ADD FOREIGN KEY `FK_TaskAssignee_User` (`UserId`) REF
 CREATE UNIQUE INDEX `UIX_TaskAssignee_TaskId_UserId` ON `TaskAssignee`(`TaskId`, `UserId`);
 
 CREATE TABLE `TaskComment` (
-                               `Id` BIGINT PRIMARY KEY,
+                               `Id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                                `Comment` VARCHAR(5000) NOT NULL,
                                `TaskId` BIGINT NOT NULL,
                                `UserId` BIGINT NOT NULL,
@@ -72,7 +72,7 @@ ALTER TABLE `TaskComment` ADD FOREIGN KEY `FK_TaskComment_Task` (`TaskId`) REFER
 ALTER TABLE `TaskComment` ADD FOREIGN KEY `FK_TaskComment_User` (`UserId`) REFERENCES `User` (`Id`);
 
 CREATE TABLE `UserPermissionBoard`(
-                                        `Id` BIGINT PRIMARY KEY,
+                                        `Id` BIGINT AUTO_INCREMENT PRIMARY KEY,
                                         `BoardId` BIGINT NOT NULL,
                                         `UserId` BIGINT NOT NULL,
                                         `CanView` BIT NOT NULL,
