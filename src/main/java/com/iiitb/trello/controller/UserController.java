@@ -3,11 +3,10 @@ package com.iiitb.trello.controller;
 import com.iiitb.trello.model.entities.UserEntity;
 import com.iiitb.trello.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class UserController {
     private final UserService userService;
 
@@ -16,7 +15,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/api/sign-up")
+    @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
     public void registerNewUser(@RequestBody UserEntity userEntity){
          userService.addNewUser(userEntity);
     }

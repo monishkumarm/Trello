@@ -37,6 +37,7 @@ import {AuthInterceptor} from './services/auth.interceptor';
 import {TaskComponent} from './components/task/task.component';
 import {EditTaskComponent} from './components/edit-task/edit-task.component';
 import {DeleteTaskComponent} from './components/delete-task/delete-task.component';
+import {SignupComponent} from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {DeleteTaskComponent} from './components/delete-task/delete-task.componen
     DashboardComponent,
     TaskComponent,
     EditTaskComponent,
-    DeleteTaskComponent
+    DeleteTaskComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

@@ -2,73 +2,84 @@ USE Trello;
 
 CREATE TABLE `User` (
                         `Id` BIGINT PRIMARY KEY,
-                        `FullName` VARCHAR(500),
-                        `Email` VARCHAR(320),
-                        `TimeZoneId` INT,
-                        `Password` VARCHAR(500),
-                        `IsActive` BIT,
-                        `CreatedOn` DATETIME
+                        `FullName` VARCHAR(500) NOT NULL,
+                        `Email` VARCHAR(320) NOT NULL UNIQUE,
+                        `TimeZoneId` INT NOT NULL,
+                        `Password` VARCHAR(500) NOT NULL,
+                        `IsActive` BIT NOT NULL,
+                        `CreatedOn` DATETIME NOT NULL
 );
 
 CREATE TABLE `Board` (
                          `Id` BIGINT PRIMARY KEY,
-                         `Name` VARCHAR(50),
-                         `IsActive` BIT,
-                         `CreatedOn` DATETIME,
-                         `CreatedBy` BIGINT,
-                         `LastChangeOn` DATETIME,
-                         `LastChangeBy` BIGINT
+                         `Name` VARCHAR(50) NOT NULL,
+                         `IsActive` BIT NOT NULL,
+                         `CreatedOn` DATETIME NOT NULL,
+                         `CreatedBy` BIGINT NOT NULL,
+                         `LastChangeOn` DATETIME NOT NULL,
+                         `LastChangeBy` BIGINT NOT NULL
 );
+
+ALTER TABLE `Board` ADD FOREIGN KEY `FK_Board_User_CreatedBy` (`CreatedBy`) REFERENCES `User` (`Id`);
+ALTER TABLE `Board` ADD FOREIGN KEY `FK_Board_User_LastChangeBy` (`LastChangeBy`) REFERENCES `User` (`Id`);
 
 CREATE TABLE `TaskStatus` (
                               `Id` BIGINT PRIMARY KEY,
-                              `BoardId` BIGINT,
-                              `Name` VARCHAR(50),
-                              `IsActive` BIT
+                              `BoardId` BIGINT NOT NULL,
+                              `Name` VARCHAR(50) NOT NULL,
+                              `IsActive` BIT NOT NULL
 );
+
+ALTER TABLE `TaskStatus` ADD FOREIGN KEY `FK_TaskStatus_Board` (`BoardId`) REFERENCES `Board` (`Id`);
 
 CREATE TABLE `Task` (
                         `Id` BIGINT PRIMARY KEY,
-                        `Name` VARCHAR(50),
-                        `Description` VARCHAR(5000),
-                        `TaskStatusId` BIGINT,
-                        `IsActive` BIT,
-                        `CreatedOn` DATETIME,
-                        `CreatedBy` BIGINT,
-                        `LastChangeOn` DATETIME,
-                        `LastChangeBy` BIGINT
+                        `BoardId` BIGINT NOT NULL,
+                        `Name` VARCHAR(100) NOT NULL,
+                        `Description` VARCHAR(5000) NOT NULL,
+                        `TaskStatusId` BIGINT NOT NULL,
+                        `IsActive` BIT NOT NULL,
+                        `CreatedOn` DATETIME NOT NULL,
+                        `CreatedBy` BIGINT NOT NULL,
+                        `LastChangeOn` DATETIME NOT NULL,
+                        `LastChangeBy` BIGINT NOT NULL
 );
+
+ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_Board` (`BoardId`) REFERENCES `Board` (`Id`);
+ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_User_CreatedBy` (`CreatedBy`) REFERENCES `User` (`Id`);
+ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_User_LastChangeBy` (`LastChangeBy`) REFERENCES `User` (`Id`);
+ALTER TABLE `Task` ADD FOREIGN KEY `FK_Task_TaskStatus` (`TaskStatusId`) REFERENCES `TaskStatus` (`Id`);
 
 CREATE TABLE `TaskAssignee` (
                                 `Id` BIGINT PRIMARY KEY,
-                                `TaskId` BIGINT,
-                                `UserId` BIGINT
+                                `TaskId` BIGINT NOT NULL,
+                                `UserId` BIGINT NOT NULL
 );
+
+ALTER TABLE `TaskAssignee` ADD FOREIGN KEY `FK_TaskAssignee_Task` (`TaskId`) REFERENCES `Task` (`Id`);
+ALTER TABLE `TaskAssignee` ADD FOREIGN KEY `FK_TaskAssignee_User` (`UserId`) REFERENCES `User` (`Id`);
+CREATE UNIQUE INDEX `UIX_TaskAssignee_TaskId_UserId` ON `TaskAssignee`(`TaskId`, `UserId`);
 
 CREATE TABLE `TaskComment` (
                                `Id` BIGINT PRIMARY KEY,
-                               `Comment` VARCHAR(5000),
-                               `TaskId` BIGINT,
-                               `UserId` BIGINT,
-                               `CreatedOn` DATETIME
+                               `Comment` VARCHAR(5000) NOT NULL,
+                               `TaskId` BIGINT NOT NULL,
+                               `UserId` BIGINT NOT NULL,
+                               `CreatedOn` DATETIME NOT NULL
 );
 
-ALTER TABLE `Board` ADD FOREIGN KEY (`CreatedBy`) REFERENCES `User` (`Id`);
+ALTER TABLE `TaskComment` ADD FOREIGN KEY `FK_TaskComment_Task` (`TaskId`) REFERENCES `Task` (`Id`);
+ALTER TABLE `TaskComment` ADD FOREIGN KEY `FK_TaskComment_User` (`UserId`) REFERENCES `User` (`Id`);
 
-ALTER TABLE `Board` ADD FOREIGN KEY (`LastChangeBy`) REFERENCES `User` (`Id`);
+CREATE TABLE `UserPermissionBoard`(
+                                        `Id` BIGINT PRIMARY KEY,
+                                        `BoardId` BIGINT NOT NULL,
+                                        `UserId` BIGINT NOT NULL,
+                                        `CanView` BIT NOT NULL,
+                                        `CanModify` BIT NOT NULL,
+                                        `CanDelete` BIT NOT NULL
+);
 
-ALTER TABLE `TaskStatus` ADD FOREIGN KEY (`BoardId`) REFERENCES `Board` (`Id`);
-
-ALTER TABLE `Task` ADD FOREIGN KEY (`CreatedBy`) REFERENCES `User` (`Id`);
-
-ALTER TABLE `Task` ADD FOREIGN KEY (`LastChangeBy`) REFERENCES `User` (`Id`);
-
-ALTER TABLE `Task` ADD FOREIGN KEY (`TaskStatusId`) REFERENCES `TaskStatus` (`Id`);
-
-ALTER TABLE `TaskAssignee` ADD FOREIGN KEY (`TaskId`) REFERENCES `Task` (`Id`);
-
-ALTER TABLE `TaskAssignee` ADD FOREIGN KEY (`UserId`) REFERENCES `User` (`Id`);
-
-ALTER TABLE `TaskComment` ADD FOREIGN KEY (`TaskId`) REFERENCES `Task` (`Id`);
-
-ALTER TABLE `TaskComment` ADD FOREIGN KEY (`UserId`) REFERENCES `User` (`Id`);
+ALTER TABLE `UserPermissionBoard` ADD FOREIGN KEY `FK_UserPermissionBoard_User` (`UserId`) REFERENCES `User` (`Id`);
+ALTER TABLE `UserPermissionBoard` ADD FOREIGN KEY `FK_UserPermissionBoard_Board` (`BoardId`) REFERENCES `Board` (`Id`);
+CREATE UNIQUE INDEX `UIX_UserPermissionBoard_BoardId_UserId` ON `UserPermissionBoard`(`BoardId`, `UserId`);
