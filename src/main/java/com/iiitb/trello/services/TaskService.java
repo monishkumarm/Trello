@@ -1,11 +1,16 @@
 package com.iiitb.trello.services;
 
-import com.iiitb.trello.model.dtos.TasksDto;
+import com.iiitb.trello.model.dtos.BoardDto;
+import com.iiitb.trello.model.dtos.TaskDto;
+import com.iiitb.trello.model.dtos.TaskStatusDto;
 import com.iiitb.trello.model.entities.TaskEntity;
 import com.iiitb.trello.repo.TaskRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
@@ -16,8 +21,32 @@ public class TaskService {
         this.taskRepository = taskRepository;
     }
 
-    public TasksDto getTasks() {
-        return new TasksDto(taskRepository.findAll());
+    public List<TaskDto> getTasks() {
+        return taskRepository.findTasks();
+    }
+
+    public List<TaskStatusDto> getTaskStatuses() {
+        var tasks = getTasks();
+        var taskStatuses = taskRepository.findTaskStatuses();
+
+        for (var taskStatus : taskStatuses) {
+            var tasksStream = tasks.stream().filter((taskDto -> Objects.equals(taskDto.getTaskStatusId(), taskStatus.getId())));
+            taskStatus.tasks = tasksStream.collect(Collectors.toList());
+        }
+
+        return taskStatuses;
+    }
+
+    public List<BoardDto> getBoards(){
+        var taskStatuses = getTaskStatuses();
+        var boards = taskRepository.findBoards();
+
+        for(var board : boards){
+            var taskStatusesStream = taskStatuses.stream().filter((taskStatusDto -> Objects.equals(taskStatusDto.getBoardId(), board.getId())));
+            board.taskStatuses = taskStatusesStream.collect(Collectors.toList());
+        }
+
+        return boards;
     }
 
     public Optional<TaskEntity> createTask(TaskEntity newTask) {
