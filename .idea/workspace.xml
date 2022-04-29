@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="372b65b6-1c82-4911-b4dc-eb05ceee1aac" name="Changes" comment="DATABASE: Added entities">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/entities/BoardEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/entities/TaskAssigneeEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/entities/TaskCommentEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/entities/TaskEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/entities/TaskStatusEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/entities/UserEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
+    <list default="true" id="372b65b6-1c82-4911-b4dc-eb05ceee1aac" name="Changes" comment="UI: Other UI changes">
+      <change afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/appConstants.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/f539c76f-295d-4f95-8af0-5895763da07a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f539c76f-295d-4f95-8af0-5895763da07a.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/TrelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/TrelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/CustomUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/CustomUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/repo/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/repo/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/services/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/iiitb/trello/services/CustomUserDetailsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/iiitb/trello/TrelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/iiitb/trello/TrelloApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/iiitb/trello/model/CustomUserDetails.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/iiitb/trello/model/CustomUserDetails.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/iiitb/trello/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/iiitb/trello/repo/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/iiitb/trello/repo/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/iiitb/trello/services/CustomUserDetailsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/iiitb/trello/services/CustomUserDetailsService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/home/home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/home/home.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/home/home.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/login/login.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/login/login.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/app/components/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/TrelloWebApp/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/TrelloWebApp/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +36,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="com.haulmont.jpb.JpaRepository" />
       </list>
     </option>
   </component>
@@ -85,37 +84,62 @@
       </MavenGeneralSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="27PbeSqhwVHqMVzt5x3gK0tBWj9" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JPA.DatabaseSchemaImportDialog": "f539c76f-295d-4f95-8af0-5895763da07a",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DtoCreateDialog.EQUALS_HASH_CODE_INITIAL_PROP_KEY&quot;: &quot;false&quot;,
+    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;f539c76f-295d-4f95-8af0-5895763da07a&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Docker&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;9d72bd358168720e8c17e6f7245d0eda&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/monish/Downloads/Trello/src/main/TrelloWebApp/node_modules/typescript/lib&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="com.iiitb.trello.model.entities" />
+      <recent name="" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.TrelloApplication">
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
     <configuration name="TrelloApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Trello" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.iiitb.trello.TrelloApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/src/main/TrelloWebApp/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -133,7 +157,24 @@
       <workItem from="1649229034410" duration="452000" />
       <workItem from="1649229551546" duration="1013000" />
       <workItem from="1649486935310" duration="8000" />
-      <workItem from="1650043761863" duration="2857000" />
+      <workItem from="1650043761863" duration="3135000" />
+      <workItem from="1650104845127" duration="19000" />
+      <workItem from="1650430335754" duration="6012000" />
+      <workItem from="1650617258368" duration="5117000" />
+      <workItem from="1650694402243" duration="2689000" />
+      <workItem from="1650711977035" duration="845000" />
+      <workItem from="1650718170149" duration="91000" />
+      <workItem from="1650719065364" duration="2163000" />
+      <workItem from="1650776694618" duration="277000" />
+      <workItem from="1650804324088" duration="686000" />
+      <workItem from="1650879548895" duration="891000" />
+      <workItem from="1651051187178" duration="1403000" />
+      <workItem from="1651066362164" duration="3085000" />
+      <workItem from="1651124266866" duration="14501000" />
+      <workItem from="1651149548742" duration="5377000" />
+      <workItem from="1651166833601" duration="758000" />
+      <workItem from="1651208453858" duration="1912000" />
+      <workItem from="1651210442380" duration="1008000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1649228560033</created>
@@ -142,7 +183,140 @@
       <option name="project" value="LOCAL" />
       <updated>1649228560033</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="DATABASE: Added entities">
+      <created>1650046760822</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1650046760822</updated>
+    </task>
+    <task id="LOCAL-00003" summary="DATABASE: Added entities">
+      <created>1650046802022</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650046802022</updated>
+    </task>
+    <task id="LOCAL-00004" summary="API: Added REST APIs for Boards and Tasks">
+      <created>1650436780185</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650436780185</updated>
+    </task>
+    <task id="LOCAL-00005" summary="DATABASE: Added Constraints + UserPermissionBoard table">
+      <created>1650618562630</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1650618562630</updated>
+    </task>
+    <task id="LOCAL-00006" summary="DATABASE: Added missing column">
+      <created>1650618875596</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1650618875596</updated>
+    </task>
+    <task id="LOCAL-00007" summary="DATABASE: Regenerated Entities">
+      <created>1650619932796</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1650619932796</updated>
+    </task>
+    <task id="LOCAL-00008" summary="FIX: CORS Issue">
+      <created>1651209260634</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651209260634</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Created required DTOs">
+      <created>1651209329211</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651209329211</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Created required DTOs">
+      <created>1651209351392</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651209351392</updated>
+    </task>
+    <task id="LOCAL-00011" summary="API: Get Boards with tasks">
+      <created>1651209496077</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651209496077</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added generated classes to gitignore">
+      <created>1651210015630</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651210015630</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added generated classes to gitignore">
+      <created>1651210367376</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651210367376</updated>
+    </task>
+    <task id="LOCAL-00014" summary="UI: Changed Material theme">
+      <created>1651210792203</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1651210792203</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added .idea to gitignore">
+      <created>1651210877816</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1651210877816</updated>
+    </task>
+    <task id="LOCAL-00016" summary="UI: Updated dashboard component">
+      <created>1651211079860</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1651211079861</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Created front end interfaces">
+      <created>1651211118474</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1651211118474</updated>
+    </task>
+    <task id="LOCAL-00018" summary="UI: Created task component">
+      <created>1651211144030</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1651211144030</updated>
+    </task>
+    <task id="LOCAL-00019" summary="UI: Created add and delete task components">
+      <created>1651211204394</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1651211204394</updated>
+    </task>
+    <task id="LOCAL-00020" summary="UI: Updated navbar component">
+      <created>1651211283505</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1651211283505</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,8 +334,25 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="DATABASE: Added entities" />
-    <option name="LAST_COMMIT_MESSAGE" value="DATABASE: Added entities" />
+    <MESSAGE value="API: Added REST APIs for Boards and Tasks" />
+    <MESSAGE value="DATABASE: Added Constraints + UserPermissionBoard table" />
+    <MESSAGE value="DATABASE: Added missing column" />
+    <MESSAGE value="DATABASE: Regenerated Entities" />
+    <MESSAGE value="FIX: CORS Issue" />
+    <MESSAGE value="Created required DTOs" />
+    <MESSAGE value="API: Get Boards with tasks" />
+    <MESSAGE value="Added generated classes to gitignore" />
+    <MESSAGE value="UI: Changed Material theme" />
+    <MESSAGE value="Added .idea to gitignore" />
+    <MESSAGE value="UI: Updated dashboard component" />
+    <MESSAGE value="Created front end interfaces" />
+    <MESSAGE value="UI: Created task component" />
+    <MESSAGE value="UI: Created add and delete task components" />
+    <MESSAGE value="UI: Updated navbar component" />
+    <MESSAGE value="UI: Other UI changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI: Other UI changes" />
   </component>
 </project>

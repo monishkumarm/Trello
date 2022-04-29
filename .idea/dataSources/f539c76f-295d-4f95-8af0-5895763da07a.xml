@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="@localhost">
+<dataSource name="Trello@localhost">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.38">
     <root id="1">
       <DefaultCasing>exact</DefaultCasing>
@@ -1212,1049 +1212,1172 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="310" parent="288" name="Id">
+    <table id="310" parent="276" name="UserPermissionBoard">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="311" parent="288" name="Id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="311" parent="288" name="Name">
+    <column id="312" parent="288" name="Name">
       <DataType>varchar(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <index id="312" parent="288" name="UK_2g2xxj1r670qpmlfe3xijhq0x">
+    <index id="313" parent="288" name="UK_2g2xxj1r670qpmlfe3xijhq0x">
       <ColNames>Name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="313" parent="288" name="PRIMARY">
+    <key id="314" parent="288" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="314" parent="288" name="UK_2g2xxj1r670qpmlfe3xijhq0x">
+    <key id="315" parent="288" name="UK_2g2xxj1r670qpmlfe3xijhq0x">
       <ColNames>Name</ColNames>
       <UnderlyingIndexName>UK_2g2xxj1r670qpmlfe3xijhq0x</UnderlyingIndexName>
     </key>
-    <column id="315" parent="289" name="Id">
+    <column id="316" parent="289" name="Id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="316" parent="289" name="Name">
+    <column id="317" parent="289" name="Name">
       <DataType>varchar(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <index id="317" parent="289" name="UK_sr6ct9kmg8xuctc4qtampl1vr">
+    <index id="318" parent="289" name="UK_sr6ct9kmg8xuctc4qtampl1vr">
       <ColNames>Name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="318" parent="289" name="PRIMARY">
+    <key id="319" parent="289" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="319" parent="289" name="UK_sr6ct9kmg8xuctc4qtampl1vr">
+    <key id="320" parent="289" name="UK_sr6ct9kmg8xuctc4qtampl1vr">
       <ColNames>Name</ColNames>
       <UnderlyingIndexName>UK_sr6ct9kmg8xuctc4qtampl1vr</UnderlyingIndexName>
     </key>
-    <column id="320" parent="290" name="Id">
+    <column id="321" parent="290" name="Id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="321" parent="290" name="AddressDetail">
+    <column id="322" parent="290" name="AddressDetail">
       <DataType>json|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="322" parent="290" name="IsActive">
+    <column id="323" parent="290" name="IsActive">
       <DataType>bit(1)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="323" parent="290" name="Name">
+    <column id="324" parent="290" name="Name">
       <DataType>varchar(255)|0s</DataType>
       <Position>4</Position>
     </column>
-    <index id="324" parent="290" name="UK_aqsb3qdry0fiu0bgmu3893n6x">
+    <index id="325" parent="290" name="UK_aqsb3qdry0fiu0bgmu3893n6x">
       <ColNames>Name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="325" parent="290" name="PRIMARY">
+    <key id="326" parent="290" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="326" parent="290" name="UK_aqsb3qdry0fiu0bgmu3893n6x">
+    <key id="327" parent="290" name="UK_aqsb3qdry0fiu0bgmu3893n6x">
       <ColNames>Name</ColNames>
       <UnderlyingIndexName>UK_aqsb3qdry0fiu0bgmu3893n6x</UnderlyingIndexName>
     </key>
-    <column id="327" parent="291" name="Id">
+    <column id="328" parent="291" name="Id">
       <AutoIncrement>8</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="328" parent="291" name="AddressDetail">
+    <column id="329" parent="291" name="AddressDetail">
       <DataType>json|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="329" parent="291" name="Age">
+    <column id="330" parent="291" name="Age">
       <DataType>int|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="330" parent="291" name="CreatedBy">
+    <column id="331" parent="291" name="CreatedBy">
       <DataType>bigint|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="331" parent="291" name="CreatedOn">
+    <column id="332" parent="291" name="CreatedOn">
       <DataType>datetime(6)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="332" parent="291" name="Education">
+    <column id="333" parent="291" name="Education">
       <DataType>varchar(255)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="333" parent="291" name="Email">
+    <column id="334" parent="291" name="Email">
       <DataType>varchar(255)|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="334" parent="291" name="FullName">
+    <column id="335" parent="291" name="FullName">
       <DataType>varchar(255)|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="335" parent="291" name="Gender">
+    <column id="336" parent="291" name="Gender">
       <DataType>int|0s</DataType>
       <Position>9</Position>
     </column>
-    <column id="336" parent="291" name="InformantCaregiverName">
+    <column id="337" parent="291" name="InformantCaregiverName">
       <DataType>varchar(255)|0s</DataType>
       <Position>10</Position>
     </column>
-    <column id="337" parent="291" name="Languages">
+    <column id="338" parent="291" name="Languages">
       <DataType>varchar(255)|0s</DataType>
       <Position>11</Position>
     </column>
-    <column id="338" parent="291" name="LastChangeBy">
+    <column id="339" parent="291" name="LastChangeBy">
       <DataType>bigint|0s</DataType>
       <Position>12</Position>
     </column>
-    <column id="339" parent="291" name="LastChangeOn">
+    <column id="340" parent="291" name="LastChangeOn">
       <DataType>datetime(6)|0s</DataType>
       <Position>13</Position>
     </column>
-    <column id="340" parent="291" name="Occupation">
+    <column id="341" parent="291" name="Occupation">
       <DataType>varchar(255)|0s</DataType>
       <Position>14</Position>
     </column>
-    <column id="341" parent="291" name="PhoneNumber">
+    <column id="342" parent="291" name="PhoneNumber">
       <DataType>varchar(255)|0s</DataType>
       <Position>15</Position>
     </column>
-    <column id="342" parent="291" name="RelationshipWithPatient">
+    <column id="343" parent="291" name="RelationshipWithPatient">
       <DataType>varchar(100)|0s</DataType>
       <Position>16</Position>
     </column>
-    <column id="343" parent="291" name="ABHAID">
+    <column id="344" parent="291" name="ABHAID">
       <DataType>varchar(255)|0s</DataType>
       <Position>17</Position>
     </column>
-    <column id="344" parent="291" name="FirstName">
+    <column id="345" parent="291" name="FirstName">
       <DataType>varchar(255)|0s</DataType>
       <Position>18</Position>
     </column>
-    <column id="345" parent="291" name="LastName">
+    <column id="346" parent="291" name="LastName">
       <DataType>varchar(255)|0s</DataType>
       <Position>19</Position>
     </column>
-    <foreign-key id="346" parent="291" name="FK4o9wjwn3s5ahphx3sl1mt4lr4">
+    <foreign-key id="347" parent="291" name="FK4o9wjwn3s5ahphx3sl1mt4lr4">
       <ColNames>CreatedBy</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <foreign-key id="347" parent="291" name="FK7dx2y3e5ee82ikyiryhp59ytn">
+    <foreign-key id="348" parent="291" name="FK7dx2y3e5ee82ikyiryhp59ytn">
       <ColNames>LastChangeBy</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <index id="348" parent="291" name="UK_1uxlm09yqvmdhddd5bw7lgc0n">
+    <index id="349" parent="291" name="UK_1uxlm09yqvmdhddd5bw7lgc0n">
       <ColNames>Email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="349" parent="291" name="UK_jon6u2q613ext0ne1r59a4bxk">
+    <index id="350" parent="291" name="UK_jon6u2q613ext0ne1r59a4bxk">
       <ColNames>PhoneNumber</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="350" parent="291" name="FK4o9wjwn3s5ahphx3sl1mt4lr4">
+    <index id="351" parent="291" name="FK4o9wjwn3s5ahphx3sl1mt4lr4">
       <ColNames>CreatedBy</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="351" parent="291" name="FK7dx2y3e5ee82ikyiryhp59ytn">
+    <index id="352" parent="291" name="FK7dx2y3e5ee82ikyiryhp59ytn">
       <ColNames>LastChangeBy</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="352" parent="291" name="PRIMARY">
+    <key id="353" parent="291" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="353" parent="291" name="UK_1uxlm09yqvmdhddd5bw7lgc0n">
+    <key id="354" parent="291" name="UK_1uxlm09yqvmdhddd5bw7lgc0n">
       <ColNames>Email</ColNames>
       <UnderlyingIndexName>UK_1uxlm09yqvmdhddd5bw7lgc0n</UnderlyingIndexName>
     </key>
-    <key id="354" parent="291" name="UK_jon6u2q613ext0ne1r59a4bxk">
+    <key id="355" parent="291" name="UK_jon6u2q613ext0ne1r59a4bxk">
       <ColNames>PhoneNumber</ColNames>
       <UnderlyingIndexName>UK_jon6u2q613ext0ne1r59a4bxk</UnderlyingIndexName>
     </key>
-    <column id="355" parent="292" name="Id">
+    <column id="356" parent="292" name="Id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="356" parent="292" name="AppointmentTime">
+    <column id="357" parent="292" name="AppointmentTime">
       <DataType>datetime(6)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="357" parent="292" name="ComplaintDetail">
+    <column id="358" parent="292" name="ComplaintDetail">
       <DataType>json|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="358" parent="292" name="DiagnosisTypeId">
+    <column id="359" parent="292" name="DiagnosisTypeId">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="359" parent="292" name="DoctorId">
+    <column id="360" parent="292" name="DoctorId">
       <DataType>bigint|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="360" parent="292" name="FollowUpDetail">
+    <column id="361" parent="292" name="FollowUpDetail">
       <DataType>json|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="361" parent="292" name="ICDDetail">
+    <column id="362" parent="292" name="ICDDetail">
       <DataType>json|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="362" parent="292" name="ImprovementStatusId">
+    <column id="363" parent="292" name="ImprovementStatusId">
       <DataType>int|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="363" parent="292" name="IsConsultationDone">
+    <column id="364" parent="292" name="IsConsultationDone">
       <DataType>bit(1)|0s</DataType>
       <Position>9</Position>
     </column>
-    <column id="364" parent="292" name="MedicineDetail">
+    <column id="365" parent="292" name="MedicineDetail">
       <DataType>json|0s</DataType>
       <Position>10</Position>
     </column>
-    <column id="365" parent="292" name="PatientId">
+    <column id="366" parent="292" name="PatientId">
       <DataType>bigint|0s</DataType>
       <Position>11</Position>
     </column>
-    <column id="366" parent="292" name="ReferredBy">
+    <column id="367" parent="292" name="ReferredBy">
       <DataType>bigint|0s</DataType>
       <Position>12</Position>
     </column>
-    <column id="367" parent="292" name="ReferredOn">
+    <column id="368" parent="292" name="ReferredOn">
       <DataType>datetime(6)|0s</DataType>
       <Position>13</Position>
     </column>
-    <column id="368" parent="292" name="TreatmentInstruction">
+    <column id="369" parent="292" name="TreatmentInstruction">
       <DataType>varchar(255)|0s</DataType>
       <Position>14</Position>
     </column>
-    <foreign-key id="369" parent="292" name="FK6p1ekdy4wemqy8ixt4ihrd2cj">
+    <foreign-key id="370" parent="292" name="FK6p1ekdy4wemqy8ixt4ihrd2cj">
       <ColNames>DiagnosisTypeId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>DiagnosisType_lu</RefTableName>
     </foreign-key>
-    <foreign-key id="370" parent="292" name="FK7l0ktdk25oaiyrhv0tkv08g5k">
+    <foreign-key id="371" parent="292" name="FK7l0ktdk25oaiyrhv0tkv08g5k">
       <ColNames>DoctorId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <foreign-key id="371" parent="292" name="FKsa1ayqfqoxsju6tetybjkux59">
+    <foreign-key id="372" parent="292" name="FKsa1ayqfqoxsju6tetybjkux59">
       <ColNames>ImprovementStatusId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>ImprovementStatus_lu</RefTableName>
     </foreign-key>
-    <foreign-key id="372" parent="292" name="FK2srap7m5e7q9j45gfxr1e57o5">
+    <foreign-key id="373" parent="292" name="FK2srap7m5e7q9j45gfxr1e57o5">
       <ColNames>PatientId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>Patient</RefTableName>
     </foreign-key>
-    <foreign-key id="373" parent="292" name="FKsk6t4b6vnchg9pc0y6ngqs73">
+    <foreign-key id="374" parent="292" name="FKsk6t4b6vnchg9pc0y6ngqs73">
       <ColNames>ReferredBy</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <index id="374" parent="292" name="FK6p1ekdy4wemqy8ixt4ihrd2cj">
+    <index id="375" parent="292" name="FK6p1ekdy4wemqy8ixt4ihrd2cj">
       <ColNames>DiagnosisTypeId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="375" parent="292" name="FK7l0ktdk25oaiyrhv0tkv08g5k">
+    <index id="376" parent="292" name="FK7l0ktdk25oaiyrhv0tkv08g5k">
       <ColNames>DoctorId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="376" parent="292" name="FKsa1ayqfqoxsju6tetybjkux59">
+    <index id="377" parent="292" name="FKsa1ayqfqoxsju6tetybjkux59">
       <ColNames>ImprovementStatusId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="377" parent="292" name="FK2srap7m5e7q9j45gfxr1e57o5">
+    <index id="378" parent="292" name="FK2srap7m5e7q9j45gfxr1e57o5">
       <ColNames>PatientId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="378" parent="292" name="FKsk6t4b6vnchg9pc0y6ngqs73">
+    <index id="379" parent="292" name="FKsk6t4b6vnchg9pc0y6ngqs73">
       <ColNames>ReferredBy</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="379" parent="292" name="PRIMARY">
+    <key id="380" parent="292" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="380" parent="293" name="Id">
+    <column id="381" parent="293" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="381" parent="293" name="PatientId">
+    <column id="382" parent="293" name="PatientId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="382" parent="293" name="PerformedByUserId">
+    <column id="383" parent="293" name="PerformedByUserId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="383" parent="293" name="PerformedOn">
+    <column id="384" parent="293" name="PerformedOn">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="384" parent="293" name="ReachedDiagnosisId">
+    <column id="385" parent="293" name="ReachedDiagnosisId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <foreign-key id="385" parent="293" name="PatientQuestionnaire_ibfk_1">
+    <foreign-key id="386" parent="293" name="PatientQuestionnaire_ibfk_1">
       <ColNames>PatientId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>Patient</RefTableName>
     </foreign-key>
-    <foreign-key id="386" parent="293" name="PatientQuestionnaire_ibfk_2">
+    <foreign-key id="387" parent="293" name="PatientQuestionnaire_ibfk_2">
       <ColNames>PerformedByUserId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <foreign-key id="387" parent="293" name="PatientQuestionnaire_ibfk_3">
+    <foreign-key id="388" parent="293" name="PatientQuestionnaire_ibfk_3">
       <ColNames>ReachedDiagnosisId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>QuestionnaireDiagnosis</RefTableName>
     </foreign-key>
-    <index id="388" parent="293" name="PatientId">
+    <index id="389" parent="293" name="PatientId">
       <ColNames>PatientId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="389" parent="293" name="PerformedByUserId">
+    <index id="390" parent="293" name="PerformedByUserId">
       <ColNames>PerformedByUserId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="390" parent="293" name="ReachedDiagnosisId">
+    <index id="391" parent="293" name="ReachedDiagnosisId">
       <ColNames>ReachedDiagnosisId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="391" parent="293" name="PRIMARY">
+    <key id="392" parent="293" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="392" parent="294" name="Id">
+    <column id="393" parent="294" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="393" parent="294" name="PatientQuestionnaireId">
+    <column id="394" parent="294" name="PatientQuestionnaireId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="394" parent="294" name="QuestionId">
+    <column id="395" parent="294" name="QuestionId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="395" parent="294" name="SelectedOptionId">
+    <column id="396" parent="294" name="SelectedOptionId">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <foreign-key id="396" parent="294" name="PatientQuestionnaireAnswer_ibfk_1">
+    <foreign-key id="397" parent="294" name="PatientQuestionnaireAnswer_ibfk_1">
       <ColNames>PatientQuestionnaireId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>PatientQuestionnaire</RefTableName>
     </foreign-key>
-    <foreign-key id="397" parent="294" name="PatientQuestionnaireAnswer_ibfk_2">
+    <foreign-key id="398" parent="294" name="PatientQuestionnaireAnswer_ibfk_2">
       <ColNames>QuestionId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>Questionnaire</RefTableName>
     </foreign-key>
-    <foreign-key id="398" parent="294" name="PatientQuestionnaireAnswer_ibfk_3">
+    <foreign-key id="399" parent="294" name="PatientQuestionnaireAnswer_ibfk_3">
       <ColNames>SelectedOptionId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>QuestionnaireOption</RefTableName>
     </foreign-key>
-    <index id="399" parent="294" name="PatientQuestionnaireId">
+    <index id="400" parent="294" name="PatientQuestionnaireId">
       <ColNames>PatientQuestionnaireId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="400" parent="294" name="QuestionId">
+    <index id="401" parent="294" name="QuestionId">
       <ColNames>QuestionId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="401" parent="294" name="SelectedOptionId">
+    <index id="402" parent="294" name="SelectedOptionId">
       <ColNames>SelectedOptionId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="402" parent="294" name="PRIMARY">
+    <key id="403" parent="294" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="403" parent="295" name="Id">
+    <column id="404" parent="295" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="404" parent="295" name="Question">
+    <column id="405" parent="295" name="Question">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="405" parent="295" name="GroupId">
+    <column id="406" parent="295" name="GroupId">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="406" parent="295" name="SubGroupId">
+    <column id="407" parent="295" name="SubGroupId">
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <index id="407" parent="295" name="Question">
+    <index id="408" parent="295" name="Question">
       <ColNames>Question</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="408" parent="295" name="PRIMARY">
+    <key id="409" parent="295" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="409" parent="295" name="Question">
+    <key id="410" parent="295" name="Question">
       <ColNames>Question</ColNames>
       <UnderlyingIndexName>Question</UnderlyingIndexName>
     </key>
-    <column id="410" parent="296" name="Id">
+    <column id="411" parent="296" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="411" parent="296" name="DiagnosisInfo">
+    <column id="412" parent="296" name="DiagnosisInfo">
       <DataType>varchar(100)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <index id="412" parent="296" name="DiagnosisInfo">
+    <index id="413" parent="296" name="DiagnosisInfo">
       <ColNames>DiagnosisInfo</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="413" parent="296" name="PRIMARY">
+    <key id="414" parent="296" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="414" parent="296" name="DiagnosisInfo">
+    <key id="415" parent="296" name="DiagnosisInfo">
       <ColNames>DiagnosisInfo</ColNames>
       <UnderlyingIndexName>DiagnosisInfo</UnderlyingIndexName>
     </key>
-    <column id="415" parent="297" name="Id">
+    <column id="416" parent="297" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="416" parent="297" name="QuestionId">
+    <column id="417" parent="297" name="QuestionId">
       <DataType>bigint|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="417" parent="297" name="Option">
+    <column id="418" parent="297" name="Option">
       <DataType>varchar(100)|0s</DataType>
       <Position>3</Position>
     </column>
-    <foreign-key id="418" parent="297" name="QuestionnaireOption_ibfk_1">
+    <foreign-key id="419" parent="297" name="QuestionnaireOption_ibfk_1">
       <ColNames>QuestionId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>Questionnaire</RefTableName>
     </foreign-key>
-    <index id="419" parent="297" name="QuestionId">
+    <index id="420" parent="297" name="QuestionId">
       <ColNames>QuestionId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="420" parent="297" name="PRIMARY">
+    <key id="421" parent="297" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="421" parent="298" name="Id">
+    <column id="422" parent="298" name="Id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="422" parent="298" name="Name">
+    <column id="423" parent="298" name="Name">
       <DataType>varchar(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <index id="423" parent="298" name="UK_m2mm0skfgw2xstmk3oy3oddi9">
+    <index id="424" parent="298" name="UK_m2mm0skfgw2xstmk3oy3oddi9">
       <ColNames>Name</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="424" parent="298" name="PRIMARY">
+    <key id="425" parent="298" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="425" parent="298" name="UK_m2mm0skfgw2xstmk3oy3oddi9">
+    <key id="426" parent="298" name="UK_m2mm0skfgw2xstmk3oy3oddi9">
       <ColNames>Name</ColNames>
       <UnderlyingIndexName>UK_m2mm0skfgw2xstmk3oy3oddi9</UnderlyingIndexName>
     </key>
-    <column id="426" parent="299" name="Id">
+    <column id="427" parent="299" name="Id">
       <AutoIncrement>2</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="427" parent="299" name="AddressDetail">
+    <column id="428" parent="299" name="AddressDetail">
       <DataType>json|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="428" parent="299" name="CreatedBy">
+    <column id="429" parent="299" name="CreatedBy">
       <DataType>bigint|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="429" parent="299" name="CreatedOn">
+    <column id="430" parent="299" name="CreatedOn">
       <DataType>datetime(6)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="430" parent="299" name="Email">
+    <column id="431" parent="299" name="Email">
       <DataType>varchar(255)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="431" parent="299" name="FullName">
+    <column id="432" parent="299" name="FullName">
       <DataType>varchar(255)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="432" parent="299" name="IsActive">
+    <column id="433" parent="299" name="IsActive">
       <DataType>bit(1)|0s</DataType>
       <Position>7</Position>
     </column>
-    <column id="433" parent="299" name="LastChangeBy">
+    <column id="434" parent="299" name="LastChangeBy">
       <DataType>bigint|0s</DataType>
       <Position>8</Position>
     </column>
-    <column id="434" parent="299" name="LastChangeOn">
+    <column id="435" parent="299" name="LastChangeOn">
       <DataType>datetime(6)|0s</DataType>
       <Position>9</Position>
     </column>
-    <column id="435" parent="299" name="Password">
+    <column id="436" parent="299" name="Password">
       <DataType>varchar(255)|0s</DataType>
       <Position>10</Position>
     </column>
-    <column id="436" parent="299" name="PhoneNumber">
+    <column id="437" parent="299" name="PhoneNumber">
       <DataType>varchar(255)|0s</DataType>
       <Position>11</Position>
     </column>
-    <column id="437" parent="299" name="RoleTypeId">
+    <column id="438" parent="299" name="RoleTypeId">
       <DataType>int|0s</DataType>
       <Position>12</Position>
     </column>
-    <column id="438" parent="299" name="TimeZoneId">
+    <column id="439" parent="299" name="TimeZoneId">
       <DataType>int|0s</DataType>
       <Position>13</Position>
     </column>
-    <column id="439" parent="299" name="Username">
+    <column id="440" parent="299" name="Username">
       <DataType>varchar(255)|0s</DataType>
       <Position>14</Position>
     </column>
-    <column id="440" parent="299" name="FirstName">
+    <column id="441" parent="299" name="FirstName">
       <DataType>varchar(255)|0s</DataType>
       <Position>15</Position>
     </column>
-    <column id="441" parent="299" name="LastName">
+    <column id="442" parent="299" name="LastName">
       <DataType>varchar(255)|0s</DataType>
       <Position>16</Position>
     </column>
-    <foreign-key id="442" parent="299" name="FKrb8mcjb48vay5wwsv1mbrvpct">
+    <foreign-key id="443" parent="299" name="FKrb8mcjb48vay5wwsv1mbrvpct">
       <ColNames>CreatedBy</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <foreign-key id="443" parent="299" name="FKeewhjx1bvx2otjtito619xi0e">
+    <foreign-key id="444" parent="299" name="FKeewhjx1bvx2otjtito619xi0e">
       <ColNames>LastChangeBy</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <foreign-key id="444" parent="299" name="FKbf4ij07r3u11qcp6hkq6x419r">
+    <foreign-key id="445" parent="299" name="FKbf4ij07r3u11qcp6hkq6x419r">
       <ColNames>RoleTypeId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>RoleType_lu</RefTableName>
     </foreign-key>
-    <index id="445" parent="299" name="UK_7xyi34i31xehayqd3heubave8">
+    <index id="446" parent="299" name="UK_7xyi34i31xehayqd3heubave8">
       <ColNames>Email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="446" parent="299" name="UK_mwf067fe01yh2iw5lyjqgl9cl">
+    <index id="447" parent="299" name="UK_mwf067fe01yh2iw5lyjqgl9cl">
       <ColNames>PhoneNumber</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="447" parent="299" name="UK_seh7nteifndaopocsq9f1w8ia">
+    <index id="448" parent="299" name="UK_seh7nteifndaopocsq9f1w8ia">
       <ColNames>Username</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="448" parent="299" name="FKrb8mcjb48vay5wwsv1mbrvpct">
+    <index id="449" parent="299" name="FKrb8mcjb48vay5wwsv1mbrvpct">
       <ColNames>CreatedBy</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="449" parent="299" name="FKeewhjx1bvx2otjtito619xi0e">
+    <index id="450" parent="299" name="FKeewhjx1bvx2otjtito619xi0e">
       <ColNames>LastChangeBy</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="450" parent="299" name="FKbf4ij07r3u11qcp6hkq6x419r">
+    <index id="451" parent="299" name="FKbf4ij07r3u11qcp6hkq6x419r">
       <ColNames>RoleTypeId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="451" parent="299" name="PRIMARY">
+    <key id="452" parent="299" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="452" parent="299" name="UK_7xyi34i31xehayqd3heubave8">
+    <key id="453" parent="299" name="UK_7xyi34i31xehayqd3heubave8">
       <ColNames>Email</ColNames>
       <UnderlyingIndexName>UK_7xyi34i31xehayqd3heubave8</UnderlyingIndexName>
     </key>
-    <key id="453" parent="299" name="UK_mwf067fe01yh2iw5lyjqgl9cl">
+    <key id="454" parent="299" name="UK_mwf067fe01yh2iw5lyjqgl9cl">
       <ColNames>PhoneNumber</ColNames>
       <UnderlyingIndexName>UK_mwf067fe01yh2iw5lyjqgl9cl</UnderlyingIndexName>
     </key>
-    <key id="454" parent="299" name="UK_seh7nteifndaopocsq9f1w8ia">
+    <key id="455" parent="299" name="UK_seh7nteifndaopocsq9f1w8ia">
       <ColNames>Username</ColNames>
       <UnderlyingIndexName>UK_seh7nteifndaopocsq9f1w8ia</UnderlyingIndexName>
     </key>
-    <column id="455" parent="300" name="Id">
+    <column id="456" parent="300" name="Id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="456" parent="300" name="OrganizationId">
+    <column id="457" parent="300" name="OrganizationId">
       <DataType>bigint|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="457" parent="300" name="UserId">
+    <column id="458" parent="300" name="UserId">
       <DataType>bigint|0s</DataType>
       <Position>3</Position>
     </column>
-    <foreign-key id="458" parent="300" name="FKaehfli44wyf5gd0iqupr2h6qj">
+    <foreign-key id="459" parent="300" name="FKaehfli44wyf5gd0iqupr2h6qj">
       <ColNames>OrganizationId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>Organization</RefTableName>
     </foreign-key>
-    <foreign-key id="459" parent="300" name="FK78pf9wbjvymug5m49takqi9cm">
+    <foreign-key id="460" parent="300" name="FK78pf9wbjvymug5m49takqi9cm">
       <ColNames>UserId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <index id="460" parent="300" name="FKaehfli44wyf5gd0iqupr2h6qj">
+    <index id="461" parent="300" name="FKaehfli44wyf5gd0iqupr2h6qj">
       <ColNames>OrganizationId</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="461" parent="300" name="FK78pf9wbjvymug5m49takqi9cm">
+    <index id="462" parent="300" name="FK78pf9wbjvymug5m49takqi9cm">
       <ColNames>UserId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="462" parent="300" name="PRIMARY">
+    <key id="463" parent="300" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="463" parent="301" name="Id">
+    <column id="464" parent="301" name="Id">
       <AutoIncrement>2</AutoIncrement>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="464" parent="301" name="CanDelete">
+    <column id="465" parent="301" name="CanDelete">
       <DataType>bit(1)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="465" parent="301" name="CanModify">
+    <column id="466" parent="301" name="CanModify">
       <DataType>bit(1)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="466" parent="301" name="CanView">
+    <column id="467" parent="301" name="CanView">
       <DataType>bit(1)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="467" parent="301" name="PatientId">
+    <column id="468" parent="301" name="PatientId">
       <DataType>bigint|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="468" parent="301" name="UserId">
+    <column id="469" parent="301" name="UserId">
       <DataType>bigint|0s</DataType>
       <Position>6</Position>
     </column>
-    <foreign-key id="469" parent="301" name="FKcnkxhhwbsgb1jwdumd92f6dxs">
+    <foreign-key id="470" parent="301" name="FKcnkxhhwbsgb1jwdumd92f6dxs">
       <ColNames>PatientId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>Patient</RefTableName>
     </foreign-key>
-    <foreign-key id="470" parent="301" name="FK8btw39clsp118sgpwc6eue5d0">
+    <foreign-key id="471" parent="301" name="FK8btw39clsp118sgpwc6eue5d0">
       <ColNames>UserId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <index id="471" parent="301" name="UKb3x956bq4lvh5on5ugvlsq8yv">
+    <index id="472" parent="301" name="UKb3x956bq4lvh5on5ugvlsq8yv">
       <ColNames>PatientId
 UserId</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="472" parent="301" name="FK8btw39clsp118sgpwc6eue5d0">
+    <index id="473" parent="301" name="FK8btw39clsp118sgpwc6eue5d0">
       <ColNames>UserId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="473" parent="301" name="PRIMARY">
+    <key id="474" parent="301" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <key id="474" parent="301" name="UKb3x956bq4lvh5on5ugvlsq8yv">
+    <key id="475" parent="301" name="UKb3x956bq4lvh5on5ugvlsq8yv">
       <ColNames>PatientId
 UserId</ColNames>
       <UnderlyingIndexName>UKb3x956bq4lvh5on5ugvlsq8yv</UnderlyingIndexName>
     </key>
-    <column id="475" parent="302" name="next_val">
+    <column id="476" parent="302" name="next_val">
       <DataType>bigint|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="476" parent="303" name="id">
+    <column id="477" parent="303" name="id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="477" parent="303" name="email">
+    <column id="478" parent="303" name="email">
       <DataType>varchar(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="478" parent="303" name="enabled">
+    <column id="479" parent="303" name="enabled">
       <DataType>bit(1)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="479" parent="303" name="password">
+    <column id="480" parent="303" name="password">
       <DataType>varchar(255)|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="480" parent="303" name="role">
+    <column id="481" parent="303" name="role">
       <DataType>varchar(255)|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="481" parent="303" name="username">
+    <column id="482" parent="303" name="username">
       <DataType>varchar(255)|0s</DataType>
       <Position>6</Position>
     </column>
-    <key id="482" parent="303" name="PRIMARY">
+    <key id="483" parent="303" name="PRIMARY">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="483" parent="304" name="Id">
+    <column id="484" parent="304" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="484" parent="304" name="Name">
+    <column id="485" parent="304" name="Name">
       <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="485" parent="304" name="IsActive">
+    <column id="486" parent="304" name="IsActive">
       <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="486" parent="304" name="CreatedOn">
+    <column id="487" parent="304" name="CreatedOn">
       <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="487" parent="304" name="CreatedBy">
+    <column id="488" parent="304" name="CreatedBy">
       <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="488" parent="304" name="LastChangeOn">
+    <column id="489" parent="304" name="LastChangeOn">
       <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="489" parent="304" name="LastChangeBy">
+    <column id="490" parent="304" name="LastChangeBy">
       <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <foreign-key id="490" parent="304" name="Board_ibfk_1">
+    <foreign-key id="491" parent="304" name="Board_ibfk_1">
       <ColNames>CreatedBy</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <foreign-key id="491" parent="304" name="Board_ibfk_2">
+    <foreign-key id="492" parent="304" name="Board_ibfk_2">
       <ColNames>LastChangeBy</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>User</RefTableName>
     </foreign-key>
-    <index id="492" parent="304" name="CreatedBy">
+    <index id="493" parent="304" name="FK_Board_User_CreatedBy">
       <ColNames>CreatedBy</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="493" parent="304" name="LastChangeBy">
+    <index id="494" parent="304" name="FK_Board_User_LastChangeBy">
       <ColNames>LastChangeBy</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="494" parent="304" name="PRIMARY">
+    <key id="495" parent="304" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="495" parent="305" name="Id">
+    <column id="496" parent="305" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="496" parent="305" name="Name">
-      <DataType>varchar(50)|0s</DataType>
+    <column id="497" parent="305" name="BoardId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="497" parent="305" name="Description">
-      <DataType>varchar(5000)|0s</DataType>
+    <column id="498" parent="305" name="Name">
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="498" parent="305" name="TaskStatusId">
-      <DataType>bigint|0s</DataType>
+    <column id="499" parent="305" name="Description">
+      <DataType>varchar(5000)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="499" parent="305" name="IsActive">
-      <DataType>bit(1)|0s</DataType>
+    <column id="500" parent="305" name="TaskStatusId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="500" parent="305" name="CreatedOn">
-      <DataType>datetime|0s</DataType>
+    <column id="501" parent="305" name="IsActive">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="501" parent="305" name="CreatedBy">
-      <DataType>bigint|0s</DataType>
+    <column id="502" parent="305" name="CreatedOn">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="502" parent="305" name="LastChangeOn">
-      <DataType>datetime|0s</DataType>
+    <column id="503" parent="305" name="CreatedBy">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>8</Position>
     </column>
-    <column id="503" parent="305" name="LastChangeBy">
-      <DataType>bigint|0s</DataType>
+    <column id="504" parent="305" name="LastChangeOn">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>9</Position>
     </column>
-    <foreign-key id="504" parent="305" name="Task_ibfk_3">
-      <ColNames>TaskStatusId</ColNames>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>TaskStatus</RefTableName>
-    </foreign-key>
-    <foreign-key id="505" parent="305" name="Task_ibfk_1">
-      <ColNames>CreatedBy</ColNames>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>User</RefTableName>
-    </foreign-key>
-    <foreign-key id="506" parent="305" name="Task_ibfk_2">
-      <ColNames>LastChangeBy</ColNames>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>User</RefTableName>
-    </foreign-key>
-    <index id="507" parent="305" name="TaskStatusId">
-      <ColNames>TaskStatusId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="508" parent="305" name="CreatedBy">
-      <ColNames>CreatedBy</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="509" parent="305" name="LastChangeBy">
-      <ColNames>LastChangeBy</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="510" parent="305" name="PRIMARY">
-      <ColNames>Id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
-    <column id="511" parent="306" name="Id">
+    <column id="505" parent="305" name="LastChangeBy">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <Position>1</Position>
+      <Position>10</Position>
     </column>
-    <column id="512" parent="306" name="TaskId">
-      <DataType>bigint|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="513" parent="306" name="UserId">
-      <DataType>bigint|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <foreign-key id="514" parent="306" name="TaskAssignee_ibfk_1">
-      <ColNames>TaskId</ColNames>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>Task</RefTableName>
-    </foreign-key>
-    <foreign-key id="515" parent="306" name="TaskAssignee_ibfk_2">
-      <ColNames>UserId</ColNames>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>User</RefTableName>
-    </foreign-key>
-    <index id="516" parent="306" name="TaskId">
-      <ColNames>TaskId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="517" parent="306" name="UserId">
-      <ColNames>UserId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="518" parent="306" name="PRIMARY">
-      <ColNames>Id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
-    <column id="519" parent="307" name="Id">
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="520" parent="307" name="Comment">
-      <DataType>varchar(5000)|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="521" parent="307" name="TaskId">
-      <DataType>bigint|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="522" parent="307" name="UserId">
-      <DataType>bigint|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <column id="523" parent="307" name="CreatedOn">
-      <DataType>datetime|0s</DataType>
-      <Position>5</Position>
-    </column>
-    <foreign-key id="524" parent="307" name="TaskComment_ibfk_1">
-      <ColNames>TaskId</ColNames>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>Task</RefTableName>
-    </foreign-key>
-    <foreign-key id="525" parent="307" name="TaskComment_ibfk_2">
-      <ColNames>UserId</ColNames>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>User</RefTableName>
-    </foreign-key>
-    <index id="526" parent="307" name="TaskId">
-      <ColNames>TaskId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="527" parent="307" name="UserId">
-      <ColNames>UserId</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="528" parent="307" name="PRIMARY">
-      <ColNames>Id</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-    </key>
-    <column id="529" parent="308" name="Id">
-      <DataType>bigint|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="530" parent="308" name="BoardId">
-      <DataType>bigint|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="531" parent="308" name="Name">
-      <DataType>varchar(50)|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="532" parent="308" name="IsActive">
-      <DataType>bit(1)|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <foreign-key id="533" parent="308" name="TaskStatus_ibfk_1">
+    <foreign-key id="506" parent="305" name="Task_ibfk_1">
       <ColNames>BoardId</ColNames>
       <RefColNames>Id</RefColNames>
       <RefTableName>Board</RefTableName>
     </foreign-key>
-    <index id="534" parent="308" name="BoardId">
+    <foreign-key id="507" parent="305" name="Task_ibfk_4">
+      <ColNames>TaskStatusId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>TaskStatus</RefTableName>
+    </foreign-key>
+    <foreign-key id="508" parent="305" name="Task_ibfk_2">
+      <ColNames>CreatedBy</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>User</RefTableName>
+    </foreign-key>
+    <foreign-key id="509" parent="305" name="Task_ibfk_3">
+      <ColNames>LastChangeBy</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>User</RefTableName>
+    </foreign-key>
+    <index id="510" parent="305" name="FK_Task_Board">
       <ColNames>BoardId</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="535" parent="308" name="PRIMARY">
+    <index id="511" parent="305" name="FK_Task_TaskStatus">
+      <ColNames>TaskStatusId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="512" parent="305" name="FK_Task_User_CreatedBy">
+      <ColNames>CreatedBy</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="513" parent="305" name="FK_Task_User_LastChangeBy">
+      <ColNames>LastChangeBy</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="514" parent="305" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
     </key>
-    <column id="536" parent="309" name="Id">
+    <column id="515" parent="306" name="Id">
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="537" parent="309" name="FullName">
-      <DataType>varchar(500)|0s</DataType>
+    <column id="516" parent="306" name="TaskId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="538" parent="309" name="Email">
-      <DataType>varchar(320)|0s</DataType>
+    <column id="517" parent="306" name="UserId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="539" parent="309" name="TimeZoneId">
-      <DataType>int|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <column id="540" parent="309" name="Password">
-      <DataType>varchar(500)|0s</DataType>
-      <Position>5</Position>
-    </column>
-    <column id="541" parent="309" name="IsActive">
-      <DataType>bit(1)|0s</DataType>
-      <Position>6</Position>
-    </column>
-    <column id="542" parent="309" name="CreatedOn">
-      <DataType>datetime|0s</DataType>
-      <Position>7</Position>
-    </column>
-    <key id="543" parent="309" name="PRIMARY">
+    <foreign-key id="518" parent="306" name="TaskAssignee_ibfk_1">
+      <ColNames>TaskId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Task</RefTableName>
+    </foreign-key>
+    <foreign-key id="519" parent="306" name="TaskAssignee_ibfk_2">
+      <ColNames>UserId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>User</RefTableName>
+    </foreign-key>
+    <index id="520" parent="306" name="UIX_TaskAssignee_TaskId_UserId">
+      <ColNames>TaskId
+UserId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="521" parent="306" name="FK_TaskAssignee_User">
+      <ColNames>UserId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="522" parent="306" name="PRIMARY">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
+    </key>
+    <key id="523" parent="306" name="UIX_TaskAssignee_TaskId_UserId">
+      <ColNames>TaskId
+UserId</ColNames>
+      <UnderlyingIndexName>UIX_TaskAssignee_TaskId_UserId</UnderlyingIndexName>
+    </key>
+    <column id="524" parent="307" name="Id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="525" parent="307" name="Comment">
+      <DataType>varchar(5000)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="526" parent="307" name="TaskId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="527" parent="307" name="UserId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="528" parent="307" name="CreatedOn">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <foreign-key id="529" parent="307" name="TaskComment_ibfk_1">
+      <ColNames>TaskId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Task</RefTableName>
+    </foreign-key>
+    <foreign-key id="530" parent="307" name="TaskComment_ibfk_2">
+      <ColNames>UserId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>User</RefTableName>
+    </foreign-key>
+    <index id="531" parent="307" name="FK_TaskComment_Task">
+      <ColNames>TaskId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="532" parent="307" name="FK_TaskComment_User">
+      <ColNames>UserId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="533" parent="307" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="534" parent="308" name="Id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="535" parent="308" name="BoardId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="536" parent="308" name="Name">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="537" parent="308" name="IsActive">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <foreign-key id="538" parent="308" name="TaskStatus_ibfk_1">
+      <ColNames>BoardId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Board</RefTableName>
+    </foreign-key>
+    <index id="539" parent="308" name="FK_TaskStatus_Board">
+      <ColNames>BoardId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="540" parent="308" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <column id="541" parent="309" name="Id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="542" parent="309" name="FullName">
+      <DataType>varchar(500)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="543" parent="309" name="Email">
+      <DataType>varchar(320)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="544" parent="309" name="TimeZoneId">
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="545" parent="309" name="Password">
+      <DataType>varchar(500)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="546" parent="309" name="IsActive">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <column id="547" parent="309" name="CreatedOn">
+      <DataType>datetime|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+    </column>
+    <index id="548" parent="309" name="Email">
+      <ColNames>Email</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="549" parent="309" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <key id="550" parent="309" name="Email">
+      <ColNames>Email</ColNames>
+      <UnderlyingIndexName>Email</UnderlyingIndexName>
+    </key>
+    <column id="551" parent="310" name="Id">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+    </column>
+    <column id="552" parent="310" name="BoardId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+    </column>
+    <column id="553" parent="310" name="UserId">
+      <DataType>bigint|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+    </column>
+    <column id="554" parent="310" name="CanView">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+    </column>
+    <column id="555" parent="310" name="CanModify">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+    </column>
+    <column id="556" parent="310" name="CanDelete">
+      <DataType>bit(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+    </column>
+    <foreign-key id="557" parent="310" name="UserPermissionBoard_ibfk_2">
+      <ColNames>BoardId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>Board</RefTableName>
+    </foreign-key>
+    <foreign-key id="558" parent="310" name="UserPermissionBoard_ibfk_1">
+      <ColNames>UserId</ColNames>
+      <RefColNames>Id</RefColNames>
+      <RefTableName>User</RefTableName>
+    </foreign-key>
+    <index id="559" parent="310" name="UIX_UserPermissionBoard_BoardId_UserId">
+      <ColNames>BoardId
+UserId</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="560" parent="310" name="FK_UserPermissionBoard_User">
+      <ColNames>UserId</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="561" parent="310" name="PRIMARY">
+      <ColNames>Id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
+    <key id="562" parent="310" name="UIX_UserPermissionBoard_BoardId_UserId">
+      <ColNames>BoardId
+UserId</ColNames>
+      <UnderlyingIndexName>UIX_UserPermissionBoard_BoardId_UserId</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
