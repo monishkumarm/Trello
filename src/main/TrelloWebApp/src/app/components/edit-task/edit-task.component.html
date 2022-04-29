@@ -1,0 +1,25 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <img *ngIf="data?.task?.image" [src]="data?.task?.image" alt="Talk image preview">
+  <mat-form-field>
+    <input matInput placeholder="Talk description" required formControlName="text">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Issue Type</mat-label>
+    <mat-select formControlName="issueType">
+      <mat-option [style.background]="i.color" *ngFor="let i of issueTypesArrayWithColor" [value]="i.name">
+        {{i.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Speaker" required formControlName="speaker">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Image URL" formControlName="image">
+  </mat-form-field>
+  <mat-dialog-actions class="align-end">
+    <button mat-button mat-dialog-close>Cancel</button>
+
+    <button mat-button type="submit" [disabled]="formGroup.invalid">{{data?.edit ? 'Update' : 'Add'}}</button>
+  </mat-dialog-actions>
+</form>
