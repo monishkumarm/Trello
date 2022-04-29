@@ -1,9 +1,19 @@
 <mat-toolbar color="primary">
-    <span>
-        <a routerLink="/" mat-icon-button>Trello</a>
-    </span>
-    <span class="spacer"></span>
-    <a *ngIf="!isLoggedIn"  routerLink="/login" mat-icon-button>Login</a>
-    <a *ngIf="isLoggedIn" (click)="logout()" mat-icon-button>Logout</a>
-</mat-toolbar>
+  <button routerLink="/" mat-button>
+    <mat-icon>dashboard</mat-icon>
+    Trello
+  </button>
+  <button *ngIf="isLoggedIn" routerLink="/dashboard" mat-button>
+    Dashboard
+  </button>
+  <button *ngIf="!isLoggedIn" routerLink="/login" mat-button>
+    Login
+  </button>
 
+  <span class="example-spacer"></span>
+
+  <button (click)="logout()" *ngIf="isLoggedIn" mat-button>
+    Logout
+  </button>
+
+</mat-toolbar>
