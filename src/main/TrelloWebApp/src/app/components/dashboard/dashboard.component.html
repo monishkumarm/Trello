@@ -1,7 +1,45 @@
-<div class="bootstrap-wrapper">
-    <div class="container text-center">
-        <h1>Welcome to dashboard</h1>
-        <!-- <h1 *ngIf="user">user is {{user.name}}</h1>
-        <button mat-raised-button (click)="getUsers() ">Get Details</button> -->
+<div *ngFor="let board of boards; let boardIndex = index;" class="board" cdkDropList [cdkDropListData]="board.taskStatuses"
+     (cdkDropListDropped)="onTrackDrop($event)" cdkDropListOrientation="horizontal">
+
+  <div cdkDrag class="card-list mat-elevation-z1" *ngFor="let taskStatus of board.taskStatuses; let trackIndex = index;">
+    <div class="row" fxLayoutAlign="start center">
+      <h2 fxFlex="80" class="mat-h2"><span contenteditable [textContent]="taskStatus?.name"></span></h2>
+      <div fxFlex="20" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px" cdkDragHandle>
+        <button fxFlex="50" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <mat-icon>filter_list</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="filterByDate(taskStatus.tasks, -1)">
+            <mat-icon>arrow_downward</mat-icon>
+            <span>Sort By(Date)</span>
+          </button>
+          <button mat-menu-item (click)="filterByDate(taskStatus.tasks, 1)">
+            <mat-icon>arrow_upward</mat-icon>
+            <span>Sort By(Date)</span>
+          </button>
+        </mat-menu>
+        <button fxFlex="50" mat-icon-button aria-label="Example icon-button with a menu">
+          <mat-icon>drag_handle</mat-icon>
+        </button>
+      </div>
     </div>
+
+    <div *ngIf="!taskStatus['collapsed']" class="card-list-content" cdkDropList [id]="taskStatus.id"
+         [cdkDropListData]="taskStatus.tasks" [cdkDropListConnectedTo]="taskStatusIds(boardIndex)"
+         (cdkDropListDropped)="onTalkDrop($event)">
+
+      <app-task *ngFor="let task of taskStatus.tasks" [name]="task.name" [createdOn]="task.createdOn"
+                [issueType]="task?.issueType" [author]="task.speaker" [image]="task.image || ''" cdkDrag
+                (edit)="addEditTalk(task, taskStatus, true)" (delete)="deleteTalk(task, taskStatus)"></app-task>
+
+    </div>
+
+    <div fxLayout="row" fxLayoutAlign="baseline baseline">
+      <button style="width: fit-content;" class="add-talk" (click)="addEditTalk(taskStatus, taskStatus)" color="primary"
+              mat-raised-button>Add task
+      </button>
+      <span fxFlex style="text-align: right; cursor: pointer;" (click)="taskStatus['collapsed'] = !taskStatus['collapsed']">Click to {{ taskStatus['collapsed'] ? 'expand' : 'collapse'}}</span>
+    </div>
+  </div>
+
 </div>
