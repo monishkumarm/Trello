@@ -30,15 +30,11 @@ jobs:
         value: ${{secrets.APPLICATIONUSERPASSWORD}}
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-      
-    
     - name: Login to Docker
       uses: docker/login-action@v1
       with:
         username: monishkumarm
         password: ${{ secrets.DOCKER_PASSWORD }}
-    
-  
     - name: Build and push to docker
       id: docker_build
       uses: docker/build-push-action@v2.10.0
@@ -46,22 +42,5 @@ jobs:
         context: ./
         file: ./Dockerfile
         push: true
-        tags: latest
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-    - name: Deploy to Azure Web App
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'trellowebapp'
-        slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_75a5b9f64e7b43c4b475b32dd0749ceb }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_6c0a99ab69cd43d8a4f08def65456df3 }}/monishkumarm/trello:${{ github.sha }}'
-  
+        tags: monishkumarm/trello:latest
+    
