@@ -1,4 +1,5 @@
 FROM openjdk:11
-COPY --from=build /workspace/target/*.jar app.jar
 EXPOSE 5050
-ENTRYPOINT ["java","-jar","app.jar"]
+WORKDIR /applications
+COPY target/trello-0.0.1-SNAPSHOT.jar /applications/trello.jar
+ENTRYPOINT ["java","-jar", "trello.jar"]
