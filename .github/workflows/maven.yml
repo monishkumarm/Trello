@@ -46,7 +46,7 @@ jobs:
         context: ./
         file: ./Dockerfile
         push: true
-        tags: ${{ github.sha }}
+        tags: latest
 
   deploy:
     runs-on: ubuntu-latest
