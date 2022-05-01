@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.iiitb</groupId>
-    <artifactId>healthcare</artifactId>
+    <artifactId>trello</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>trello</name>
     <description>trello</description>
