@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Set Database Password
-      uses: christian-draeger/write-properties@1.0.0
+      uses: christian-draeger/write-properties@1.1.0
       with:
         path: './src/main/resources/application.properties'
         property: 'spring.datasource.password'
