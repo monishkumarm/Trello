@@ -35,7 +35,7 @@ public class JwtController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @RequestMapping(value = "/token", method = RequestMethod.POST)
+    @RequestMapping(value = "/generateToken", method = RequestMethod.POST)
     public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception {
         String hashed = getHashedPassword(helper(jwtRequest.getPassword()));
 
