@@ -1,4 +1,4 @@
-FROM openjdk
-COPY ./target/trello-1.0-SNAPSHOT-jar-with-dependencies.jar ./
-WORKDIR ./
-CMD ["java", "-jar", "trello-1.0-SNAPSHOT-jar-with-dependencies.jar"]
+FROM openjdk:11
+COPY --from=build /workspace/target/*.jar app.jar
+EXPOSE 5050
+ENTRYPOINT ["java","-jar","app.jar"]
