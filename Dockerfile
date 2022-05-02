@@ -1,5 +1,5 @@
 FROM openjdk:11
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} backend.jar
 EXPOSE 5050
-RUN ls
-COPY ./target/trello-0.0.1-SNAPSHOT.jar trello.jar
-ENTRYPOINT ["java","-jar", "trello.jar"]
+ENTRYPOINT ["java","-jar","/backend.jar"]
