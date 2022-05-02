@@ -33,7 +33,7 @@ jobs:
         password: ${{ secrets.AzureAppService_ContainerPassword_a3d12695c0d346bc9e394004aa035060 }}
 
     - name: Build and push container image to registry
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v2.10.0
       with:
         push: true
         tags: hub.docker.com/repository/docker/monishkumarm/trello/${{ secrets.AzureAppService_ContainerUsername_bfba4a66141a45e78d4e946ccc817046 }}/trello:${{ github.sha }}
