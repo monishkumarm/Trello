@@ -1,5 +1,11 @@
-FROM openjdk:11
+FROM maven AS build
+RUN mkdir -p /workspace
+WORKDIR /workspace
+COPY pom.xml /workspace
+COPY src /workspace/src
+RUN mvn clean install -Dmaven.test.skip=true
+
+FROM openjdk
+COPY --from=build /workspace/target/*.jar app.jar
 EXPOSE 5050
-COPY ./target/trello-0.0.1-SNAPSHOT-jar-with-dependencies.jar ./
-WORKDIR ./
-CMD ["java", "-jar", "trello-0.0.1-SNAPSHOT-jar-with-dependencies.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
