@@ -36,6 +36,7 @@ jobs:
       uses: docker/build-push-action@v2.10.0
       with:
         push: true
+        tags: monishkumarm/trello/${{ secrets.AzureAppService_ContainerUsername_bfba4a66141a45e78d4e946ccc817046 }}/trello:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
