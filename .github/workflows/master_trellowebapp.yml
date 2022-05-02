@@ -22,7 +22,7 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v1
       with:
-        registry: https://hub.docker.com/repository/docker/monishkumarm/trello/
+        registry: https://hub.docker.com/
         username: ${{ secrets.AzureAppService_ContainerUsername_bfba4a66141a45e78d4e946ccc817046 }}
         password: ${{ secrets.AzureAppService_ContainerPassword_a3d12695c0d346bc9e394004aa035060 }}
 
