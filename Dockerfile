@@ -6,6 +6,6 @@ COPY src /workspace/src
 RUN mvn clean install -Dmaven.test.skip=true
 
 FROM openjdk:11
-COPY --from=build /workspace/target/*.jar app.jar
+COPY --from=build /workspace/target/*jar-with-dependencies.jar app.jar
 EXPOSE 5050
 ENTRYPOINT ["java","-jar","app.jar"]
