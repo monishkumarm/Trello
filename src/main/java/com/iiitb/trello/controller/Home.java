@@ -10,7 +10,7 @@ public class Home {
 
     @RequestMapping("/welcome")
     public String welcome(){
-        String text="Hi, namaste!!";
+        String text="Hi, hello there!!!";
         return text;
     }
 
