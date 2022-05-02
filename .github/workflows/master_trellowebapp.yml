@@ -41,6 +41,7 @@ jobs:
         push: true
         tags: monishkumarm/trello:${{ github.sha }}
         file: ./Dockerfile
+        build-args: PROFILE=nectar,ARG2=test        
 
   deploy:
     runs-on: ubuntu-latest
