@@ -54,4 +54,4 @@ jobs:
         app-name: 'trellowebapp'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_d6bcc5f4482b461ba0f98036e1cf34a1 }}
-        images: 'hub.docker.com/repository/docker/monishkumarm/trello/${{ secrets.AzureAppService_ContainerUsername_bfba4a66141a45e78d4e946ccc817046 }}/trello:${{ github.sha }}'
+        images: 'hub.docker.com/repository/docker/monishkumarm/trello:${{ github.sha }}'
