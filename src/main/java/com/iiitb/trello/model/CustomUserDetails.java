@@ -23,6 +23,10 @@ public class CustomUserDetails implements UserDetails {
         return List.of(simpleGrantedAuthority);
     }
 
+    public Long getUserId(){
+        return user.getId();
+    }
+
     @Override
     public String getPassword() {
         return user.getPassword();

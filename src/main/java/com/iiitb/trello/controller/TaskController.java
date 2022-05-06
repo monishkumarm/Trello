@@ -1,10 +1,12 @@
 package com.iiitb.trello.controller;
 
+import com.iiitb.trello.model.CustomUserDetails;
 import com.iiitb.trello.model.dtos.BoardDto;
 import com.iiitb.trello.model.entities.TaskEntity;
 import com.iiitb.trello.services.TaskService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +32,8 @@ public class TaskController {
 
     @PostMapping(value="/create-task")
     public Optional<TaskEntity> createTask(@RequestBody TaskEntity newTask) {
-        return taskService.createTask(newTask);
+        Long loggedInUserId = getLoggedInUserId();
+        return taskService.createTask(newTask, loggedInUserId);
     }
 
     @PutMapping(value="/edit-task")
@@ -41,5 +44,11 @@ public class TaskController {
     @DeleteMapping(value="/delete-task/{taskId}")
     public Optional<TaskEntity> deleteTask(@PathVariable("taskId") Long taskId) {
         return taskService.deleteTask(taskId);
+    }
+
+    private Long getLoggedInUserId() {
+        var auth = SecurityContextHolder.getContext().getAuthentication();
+        var loggedInUser = (CustomUserDetails)auth.getPrincipal();
+        return loggedInUser.getUserId();
     }
 }
