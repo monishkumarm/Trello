@@ -8,6 +8,7 @@ export interface Task {
   id: bigint;
   board: Board;
   taskStatus: TaskStatus,
+  taskStatusId: bigint,
   assignees: User[],
   name: string;
   description: string;

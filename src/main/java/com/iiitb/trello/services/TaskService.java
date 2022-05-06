@@ -7,6 +7,8 @@ import com.iiitb.trello.model.entities.TaskEntity;
 import com.iiitb.trello.repo.TaskRepository;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -49,8 +51,18 @@ public class TaskService {
         return boards;
     }
 
-    public Optional<TaskEntity> createTask(TaskEntity newTask) {
+    public Optional<TaskEntity> createTask(TaskEntity newTask, Long loggedInUserId) {
+        //TODO: temporary hardcode
+        newTask.setBoardId(1L);
+
+        newTask.setActive(true);
+        newTask.setCreatedBy(loggedInUserId);
+        newTask.setCreatedOn(Timestamp.from(Instant.now()));
+        newTask.setLastChangeBy(loggedInUserId);
+        newTask.setLastChangeOn(Timestamp.from(Instant.now()));
+
         taskRepository.save(newTask);
+
         return taskRepository.findById(newTask.getId());
     }
 

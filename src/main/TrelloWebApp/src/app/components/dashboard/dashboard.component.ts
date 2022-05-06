@@ -41,6 +41,7 @@ export class DashboardComponent{
   }
 
   addEditTalk(task: any, taskStatus: TaskStatus, edit = false) {
+    task.taskStatusId = taskStatus.id;
     this._dialog.open(EditTaskComponent, {data: {task: task, edit}, width: '500px'})
       .afterClosed()
       .subscribe(newTalkData => edit ? Object.assign(task, newTalkData) : taskStatus.tasks.unshift(newTalkData));

@@ -1,7 +1,10 @@
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <img *ngIf="data?.task?.image" [src]="data?.task?.image" alt="Talk image preview">
   <mat-form-field>
-    <input matInput placeholder="Talk description" required formControlName="text">
+    <input matInput placeholder="Task Name" required formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Description" required formControlName="description">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Issue Type</mat-label>
