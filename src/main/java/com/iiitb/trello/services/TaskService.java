@@ -39,11 +39,11 @@ public class TaskService {
         return taskStatuses;
     }
 
-    public List<BoardDto> getBoards(){
+    public List<BoardDto> getBoards() {
         var taskStatuses = getTaskStatuses();
         var boards = taskRepository.findBoards();
 
-        for(var board : boards){
+        for (var board : boards) {
             var taskStatusesStream = taskStatuses.stream().filter((taskStatusDto -> Objects.equals(taskStatusDto.getBoardId(), board.getId())));
             board.taskStatuses = taskStatusesStream.collect(Collectors.toList());
         }
@@ -64,6 +64,13 @@ public class TaskService {
         taskRepository.save(newTask);
 
         return taskRepository.findById(newTask.getId());
+    }
+
+    public Optional<TaskEntity> updateTaskStatus(Long taskId, Long taskStatusId) {
+        var task = taskRepository.getById(taskId);
+        task.setTaskStatusId(taskStatusId);
+        taskRepository.save(task);
+        return Optional.of(task);
     }
 
     public Optional<TaskEntity> editTask(TaskEntity editedTask) {

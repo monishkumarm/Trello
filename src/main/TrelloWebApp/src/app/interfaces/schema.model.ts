@@ -1,5 +1,5 @@
 export interface User {
-  id : bigint;
+  id: bigint;
   fullName: string;
   email: string;
 }
@@ -30,7 +30,7 @@ export enum IssueType {
 export interface TaskStatus {
   name: string;
   tasks: Task[];
-  id: string;
+  id: bigint;
   board: Board
 }
 

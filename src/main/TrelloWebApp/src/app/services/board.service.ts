@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Board, Task } from '../interfaces/schema.model';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Board, Task} from '../interfaces/schema.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +16,21 @@ export class BoardService {
     }
   )
 
-  constructor(private httpClient: HttpClient) { }
-
-  getBoards(): Observable<Board[]> {
-    return this.httpClient.get<Board[]>(`${this.url}/tasks/getBoards`, { 'headers': this.header });
+  constructor(private httpClient: HttpClient) {
   }
 
-  saveTask(task: Task){
-    console.log(task);
-    return this.httpClient.post(`${this.url}/tasks/create-task`, task, { 'headers': this.header });
+  getBoards(): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(`${this.url}/tasks/getBoards`, {'headers': this.header});
+  }
+
+  updateTaskStatus(taskId: number, taskStatusId: number) {
+    return this.httpClient.post(`${this.url}/tasks/update-status`, {
+      "id": taskId,
+      "taskStatusId": taskStatusId
+    }, {'headers': this.header}).subscribe();
+  }
+
+  saveTask(task: Task) {
+    return this.httpClient.post(`${this.url}/tasks/create-task`, task, {'headers': this.header});
   }
 }

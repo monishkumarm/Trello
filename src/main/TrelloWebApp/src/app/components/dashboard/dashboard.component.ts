@@ -11,7 +11,7 @@ import {DeleteTaskComponent} from '../delete-task/delete-task.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent{
+export class DashboardComponent {
 
   boards: Board[] = [];
 
@@ -22,10 +22,12 @@ export class DashboardComponent{
   }
 
   taskStatusIds(boardIndex): string[] {
-    return this.boards[boardIndex].taskStatuses.map(taskStatus => taskStatus.id);
+    return this.boards[boardIndex].taskStatuses.map(taskStatus => taskStatus.id.toString());
   }
 
-  onTalkDrop(event: CdkDragDrop<Task[]>) {
+  onTalkDrop(event: CdkDragDrop<Task[]>, taskStatusId: bigint) {
+    let taskId = event.previousContainer.data[0].id;
+    this._boardService.updateTaskStatus(Number(taskId), Number(taskStatusId));
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
