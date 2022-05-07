@@ -19,36 +19,41 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    public TaskController(TaskService taskService){
+    public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
 
 
-    @RequestMapping(value="/getBoards", method = RequestMethod.GET)
+    @RequestMapping(value = "/getBoards", method = RequestMethod.GET)
     public ResponseEntity<List<BoardDto>> getBoards() {
         var boards = taskService.getBoards();
         return new ResponseEntity<>(boards, HttpStatus.OK);
     }
 
-    @PostMapping(value="/create-task")
+    @PostMapping(value = "/create-task")
     public Optional<TaskEntity> createTask(@RequestBody TaskEntity newTask) {
         Long loggedInUserId = getLoggedInUserId();
         return taskService.createTask(newTask, loggedInUserId);
     }
 
-    @PutMapping(value="/edit-task")
+    @PostMapping(value = "/update-status")
+    public Optional<TaskEntity> updateStatus(@RequestBody TaskEntity taskEntity) {
+        return taskService.updateTaskStatus(taskEntity.getId(), taskEntity.getTaskStatusId());
+    }
+
+    @PutMapping(value = "/edit-task")
     public Optional<TaskEntity> editTask(@RequestBody TaskEntity editedTask) {
         return taskService.editTask(editedTask);
     }
 
-    @DeleteMapping(value="/delete-task/{taskId}")
+    @DeleteMapping(value = "/delete-task/{taskId}")
     public Optional<TaskEntity> deleteTask(@PathVariable("taskId") Long taskId) {
         return taskService.deleteTask(taskId);
     }
 
     private Long getLoggedInUserId() {
         var auth = SecurityContextHolder.getContext().getAuthentication();
-        var loggedInUser = (CustomUserDetails)auth.getPrincipal();
+        var loggedInUser = (CustomUserDetails) auth.getPrincipal();
         return loggedInUser.getUserId();
     }
 }
