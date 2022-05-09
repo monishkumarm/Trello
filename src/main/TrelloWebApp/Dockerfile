@@ -1,5 +1,5 @@
 FROM node:14.17.6 AS build
-WORKDIR /src/app
+WORKDIR '/src/main/TrelloWebApp'
 COPY package.json ./
 RUN npm install
 COPY . .
