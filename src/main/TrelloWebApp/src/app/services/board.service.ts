@@ -30,7 +30,7 @@ export class BoardService {
     }, {'headers': this.header}).subscribe();
   }
 
-  saveTask(task: Task) {
+  saveTask(task: any) {
     return this.httpClient.post(`${this.url}/tasks/create-task`, task, {'headers': this.header});
   }
 }

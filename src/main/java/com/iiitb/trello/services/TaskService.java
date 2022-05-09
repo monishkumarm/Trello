@@ -3,24 +3,26 @@ package com.iiitb.trello.services;
 import com.iiitb.trello.model.dtos.BoardDto;
 import com.iiitb.trello.model.dtos.TaskDto;
 import com.iiitb.trello.model.dtos.TaskStatusDto;
+import com.iiitb.trello.model.entities.TaskAssigneeEntity;
 import com.iiitb.trello.model.entities.TaskEntity;
 import com.iiitb.trello.repo.TaskRepository;
+import com.iiitb.trello.repo.TaskAssigneeRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
 
     private final TaskRepository taskRepository;
+    private final TaskAssigneeRepository taskAssigneeRepository;
 
-    public TaskService(TaskRepository taskRepository) {
+    public TaskService(TaskRepository taskRepository, TaskAssigneeRepository taskAssigneeRepository) {
         this.taskRepository = taskRepository;
+        this.taskAssigneeRepository = taskAssigneeRepository;
     }
 
     public List<TaskDto> getTasks() {
@@ -39,9 +41,10 @@ public class TaskService {
         return taskStatuses;
     }
 
-    public List<BoardDto> getBoards() {
+    public List<BoardDto> getBoards(Long loggedInUserId) {
         var taskStatuses = getTaskStatuses();
-        var boards = taskRepository.findBoards();
+
+        var boards = taskRepository.findBoards(loggedInUserId);
 
         for (var board : boards) {
             var taskStatusesStream = taskStatuses.stream().filter((taskStatusDto -> Objects.equals(taskStatusDto.getBoardId(), board.getId())));
@@ -51,17 +54,34 @@ public class TaskService {
         return boards;
     }
 
-    public Optional<TaskEntity> createTask(TaskEntity newTask, Long loggedInUserId) {
-        //TODO: temporary hardcode
-        newTask.setBoardId(1L);
+    public Optional<TaskEntity> createTask(Map<String, Object> payload, Long loggedInUserId) {
+        var newTask = new TaskEntity();
+        newTask.setName((String) payload.get("name"));
+        newTask.setDescription((String) payload.get("description"));
 
+        var taskStatusId = (Integer) payload.get("taskStatusId");
+
+        newTask.setCreatedBy(loggedInUserId);
         newTask.setActive(true);
         newTask.setCreatedBy(loggedInUserId);
         newTask.setCreatedOn(Timestamp.from(Instant.now()));
         newTask.setLastChangeBy(loggedInUserId);
         newTask.setLastChangeOn(Timestamp.from(Instant.now()));
 
-        taskRepository.save(newTask);
+        //TODO: temporary hardcode
+        newTask.setBoardId(1L);
+        newTask.setTaskStatusId(Long.valueOf(taskStatusId));
+
+        TaskEntity savedEntity = taskRepository.save(newTask);
+
+        var assignees = (ArrayList<Integer>) payload.get("assignees");
+
+        for (Integer assigneeId : assignees) {
+            var taskAssigneeEntity = new TaskAssigneeEntity();
+            taskAssigneeEntity.setTaskId(savedEntity.getId());
+            taskAssigneeEntity.setUserId(Long.valueOf(assigneeId));
+            taskAssigneeRepository.save(taskAssigneeEntity);
+        }
 
         return taskRepository.findById(newTask.getId());
     }

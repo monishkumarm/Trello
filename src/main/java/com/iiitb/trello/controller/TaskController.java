@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -26,14 +27,15 @@ public class TaskController {
 
     @RequestMapping(value = "/getBoards", method = RequestMethod.GET)
     public ResponseEntity<List<BoardDto>> getBoards() {
-        var boards = taskService.getBoards();
+        Long loggedInUserId = getLoggedInUserId();
+        var boards = taskService.getBoards(loggedInUserId);
         return new ResponseEntity<>(boards, HttpStatus.OK);
     }
 
     @PostMapping(value = "/create-task")
-    public Optional<TaskEntity> createTask(@RequestBody TaskEntity newTask) {
+    public Optional<TaskEntity> createTask(@RequestBody Map<String, Object> payload) {
         Long loggedInUserId = getLoggedInUserId();
-        return taskService.createTask(newTask, loggedInUserId);
+        return taskService.createTask(payload, loggedInUserId);
     }
 
     @PostMapping(value = "/update-status")
