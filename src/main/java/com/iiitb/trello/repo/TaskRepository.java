@@ -37,6 +37,8 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
             "b.id, " +
             "b.name) " +
             "FROM " +
-            "BoardEntity AS b")
-    List<BoardDto> findBoards();
+            "BoardEntity AS b ")
+    List<BoardDto> findBoards(Long loggedInUserId);
+
+
 }
