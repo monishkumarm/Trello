@@ -1,0 +1,44 @@
+  
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches: [ master ]
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Login to Docker
+      uses: docker/login-action@v1
+      with:
+        username: monishkumarm
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push to docker
+      id: docker_build
+      uses:  docker/build-push-action@v2.10.0
+      with:
+        context: ./
+        file: ./Dockerfile
+        push: true
+        tags: monishkumarm/trello:latest
+
+  deploy:
+
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/workflows/actions/ansible
+    env:
+       SSH_USER: azureuser
