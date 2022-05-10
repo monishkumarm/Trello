@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+
+  tasks:
+    - name: run docker compose in root
+      command: docker-compose pull
+
+    - name: Runnig Docker-compose
+      command: docker-compose up --build -d
