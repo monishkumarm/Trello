@@ -1,5 +1,7 @@
 package com.iiitb.trello.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -41,15 +43,19 @@ public class TaskEntity {
     private Long lastChangeBy;
     @ManyToOne
     @JoinColumn(name = "BoardId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private BoardEntity boardByBoardId;
     @ManyToOne
     @JoinColumn(name = "TaskStatusId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private TaskStatusEntity taskStatusByTaskStatusId;
     @ManyToOne
     @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private UserEntity userByCreatedBy;
     @ManyToOne
     @JoinColumn(name = "LastChangeBy", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private UserEntity userByLastChangeBy;
     @OneToMany(mappedBy = "taskByTaskId")
     private Collection<TaskAssigneeEntity> taskAssigneesById;

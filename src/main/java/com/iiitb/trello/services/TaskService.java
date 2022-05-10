@@ -105,7 +105,7 @@ public class TaskService {
     }
 
     public Optional<TaskEntity> updateTaskStatus(Long taskId, Long taskStatusId) {
-        var task = taskRepository.getById(taskId);
+        var task = taskRepository.findById(taskId).get();
         task.setTaskStatusId(taskStatusId);
         taskRepository.save(task);
         return Optional.of(task);

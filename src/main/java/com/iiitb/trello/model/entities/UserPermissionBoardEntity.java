@@ -1,5 +1,7 @@
 package com.iiitb.trello.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -27,9 +29,11 @@ public class UserPermissionBoardEntity {
     private Boolean canDelete;
     @ManyToOne
     @JoinColumn(name = "BoardId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private BoardEntity boardByBoardId;
     @ManyToOne
     @JoinColumn(name = "UserId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private UserEntity userByUserId;
 
     public Long getId() {

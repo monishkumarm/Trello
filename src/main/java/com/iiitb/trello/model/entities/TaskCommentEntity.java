@@ -1,5 +1,7 @@
 package com.iiitb.trello.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Objects;
@@ -25,9 +27,11 @@ public class TaskCommentEntity {
     private Timestamp createdOn;
     @ManyToOne
     @JoinColumn(name = "TaskId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private TaskEntity taskByTaskId;
     @ManyToOne
     @JoinColumn(name = "UserId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private UserEntity userByUserId;
 
     public Long getId() {

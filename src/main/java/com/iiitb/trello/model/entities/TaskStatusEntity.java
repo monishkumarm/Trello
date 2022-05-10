@@ -1,5 +1,7 @@
 package com.iiitb.trello.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -24,6 +26,7 @@ public class TaskStatusEntity {
     private Collection<TaskEntity> tasksById;
     @ManyToOne
     @JoinColumn(name = "BoardId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
+    @JsonIgnore
     private BoardEntity boardByBoardId;
 
 
