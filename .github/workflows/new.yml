@@ -31,3 +31,14 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: monishkumarm/trello:latest
+
+  deploy:
+
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: ./.github/workflows/actions/ansible
+    env:
+       SSH_USER: azureuser
