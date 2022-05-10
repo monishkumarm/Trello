@@ -39,12 +39,12 @@ export class EditTaskComponent implements OnInit {
       image: [task && task.image ? task.image : ''],
       issueType: [task && task.issueType ? task.issueType : ''],
       createdAt: [task && task.createdOn ? task.createdOn : new Date()],
-      assignees: [task && task.assignees ? task.assignees : '']
+      assignees: [task && task.assignees ? task.assignees : ''],
+      boardId: [task && task.boardId ? task.boardId : '']
     });
   }
 
   onSubmit() {
-    console.log(this.formGroup.getRawValue());
     this.boardService.saveTask(this.formGroup.getRawValue()).subscribe();
     this.dialogRef.close(this.formGroup.value);
   }

@@ -9,9 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @CrossOrigin("*")
@@ -25,10 +23,19 @@ public class TaskController {
     }
 
 
-    @RequestMapping(value = "/getBoards", method = RequestMethod.GET)
-    public ResponseEntity<List<BoardDto>> getBoards() {
-        Long loggedInUserId = getLoggedInUserId();
-        var boards = taskService.getBoards(loggedInUserId);
+    @RequestMapping(value = "/getBoardsAll", method = RequestMethod.GET)
+    public ResponseEntity<List<BoardDto>> getAllBoards() {
+        // Long loggedInUserId = getLoggedInUserId();
+        var boards = taskService.getAllBoards();
+        return new ResponseEntity<>(boards, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/getBoardDetail/{boardId}", method = RequestMethod.GET)
+    public ResponseEntity<List<BoardDto>> getBoardDetail(@PathVariable Long boardId) {
+        var loggedInUserId = getLoggedInUserId();
+        var board = taskService.getBoardDetail(boardId);
+        var boards = new ArrayList<BoardDto>();
+        boards.add(board);
         return new ResponseEntity<>(boards, HttpStatus.OK);
     }
 
@@ -52,6 +59,7 @@ public class TaskController {
     public Optional<TaskEntity> deleteTask(@PathVariable("taskId") Long taskId) {
         return taskService.deleteTask(taskId);
     }
+
 
     private Long getLoggedInUserId() {
         var auth = SecurityContextHolder.getContext().getAuthentication();

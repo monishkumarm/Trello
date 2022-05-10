@@ -1,5 +1,8 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
+import {User} from "../interfaces/schema.model";
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +10,16 @@ import { Injectable } from '@angular/core';
 export class UserService {
 
   url = 'http://localhost:5050';
+  token = localStorage.getItem("token");
+  header = new HttpHeaders(
+    {
+      Authorization: "Bearer " + this.token
+    })
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getUsers(){
-    return this.httpClient.get(`${this.url}/getUsers`);
+  getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(`${this.url}/getUsers`, {'headers': this.header});
   }
 }

@@ -1,0 +1,33 @@
+<mat-card (click)="showFormMethod()">
+  <mat-card-title>Create New Board</mat-card-title>
+
+</mat-card>
+<br>
+
+<div *ngIf="showForm==true">
+  <form (ngSubmit)="createBoard()">
+    <mat-form-field>
+      <mat-label>Enter Board Name</mat-label>
+      <input name="boardname" [(ngModel)]="boardFields.name" required type="text" matInput placeholder="Board Name">
+    </mat-form-field>
+
+    <div class="container text-center">
+      <button type="submit" mat-raised-button color="primary">
+        Create
+      </button>
+
+
+    </div>
+  </form>
+</div>
+
+
+<div>
+  <mat-card *ngFor="let board of boards">
+    <mat-card-title>{{board.name}}</mat-card-title>
+    <a routerLink="/dashboard" [queryParams]="{boardId: board.id}">Go to board</a>
+
+  </mat-card>
+  <br>
+</div>
+

@@ -7,6 +7,7 @@ export interface User {
 export interface Task {
   id: bigint;
   board: Board;
+  boardId: bigint;
   taskStatus: TaskStatus,
   taskStatusId: bigint,
   assignees: User[],

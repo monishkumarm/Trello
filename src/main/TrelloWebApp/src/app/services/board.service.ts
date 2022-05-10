@@ -19,8 +19,13 @@ export class BoardService {
   constructor(private httpClient: HttpClient) {
   }
 
+
   getBoards(): Observable<Board[]> {
-    return this.httpClient.get<Board[]>(`${this.url}/tasks/getBoards`, {'headers': this.header});
+    return this.httpClient.get<Board[]>(`${this.url}/tasks/getBoardsAll`, {'headers': this.header});
+  }
+
+  getBoardDetail(boardId: any): Observable<Board[]> {
+    return this.httpClient.get<Board[]>(`${this.url}/tasks/getBoardDetail/${boardId}`, {'headers': this.header});
   }
 
   updateTaskStatus(taskId: number, taskStatusId: number) {
@@ -32,5 +37,9 @@ export class BoardService {
 
   saveTask(task: any) {
     return this.httpClient.post(`${this.url}/tasks/create-task`, task, {'headers': this.header});
+  }
+
+  createBoard(board: any){
+   return this.httpClient.post(`${this.url}/boards/create-board`,board,{'headers':this.header});
   }
 }

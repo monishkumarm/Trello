@@ -5,8 +5,9 @@ import com.iiitb.trello.model.dtos.TaskDto;
 import com.iiitb.trello.model.dtos.TaskStatusDto;
 import com.iiitb.trello.model.entities.TaskAssigneeEntity;
 import com.iiitb.trello.model.entities.TaskEntity;
-import com.iiitb.trello.repo.TaskRepository;
+import com.iiitb.trello.repo.BoardRepository;
 import com.iiitb.trello.repo.TaskAssigneeRepository;
+import com.iiitb.trello.repo.TaskRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -19,14 +20,20 @@ public class TaskService {
 
     private final TaskRepository taskRepository;
     private final TaskAssigneeRepository taskAssigneeRepository;
+    private final BoardRepository boardRepository;
 
-    public TaskService(TaskRepository taskRepository, TaskAssigneeRepository taskAssigneeRepository) {
+    public TaskService(TaskRepository taskRepository, TaskAssigneeRepository taskAssigneeRepository, BoardRepository boardRepository) {
         this.taskRepository = taskRepository;
         this.taskAssigneeRepository = taskAssigneeRepository;
+        this.boardRepository = boardRepository;
     }
 
     public List<TaskDto> getTasks() {
         return taskRepository.findTasks();
+    }
+
+    public List<TaskDto> getTasksByBoardId(Long boardId) {
+        return taskRepository.findTasksByBoardId(boardId);
     }
 
     public List<TaskStatusDto> getTaskStatuses() {
@@ -41,17 +48,29 @@ public class TaskService {
         return taskStatuses;
     }
 
-    public List<BoardDto> getBoards(Long loggedInUserId) {
-        var taskStatuses = getTaskStatuses();
+    public List<TaskStatusDto> getTaskStatusesByBoard(Long boardId) {
+        var tasks = getTasksByBoardId(boardId);
+        var taskStatuses = taskRepository.findTaskStatusesByBoardId(boardId);
 
-        var boards = taskRepository.findBoards(loggedInUserId);
-
-        for (var board : boards) {
-            var taskStatusesStream = taskStatuses.stream().filter((taskStatusDto -> Objects.equals(taskStatusDto.getBoardId(), board.getId())));
-            board.taskStatuses = taskStatusesStream.collect(Collectors.toList());
+        for (var taskStatus : taskStatuses) {
+            var tasksStream = tasks.stream().filter((taskDto -> Objects.equals(taskDto.getTaskStatusId(), taskStatus.getId())));
+            taskStatus.tasks = tasksStream.collect(Collectors.toList());
         }
 
+        return taskStatuses;
+    }
+
+
+    public List<BoardDto> getAllBoards() {
+        var boards = taskRepository.findBoards();
         return boards;
+    }
+
+
+    public BoardDto getBoardDetail(Long boardId) {
+        var board = boardRepository.findBoardDetail(boardId);
+        board.taskStatuses = getTaskStatusesByBoard(boardId);
+        return board;
     }
 
     public Optional<TaskEntity> createTask(Map<String, Object> payload, Long loggedInUserId) {
@@ -59,7 +78,10 @@ public class TaskService {
         newTask.setName((String) payload.get("name"));
         newTask.setDescription((String) payload.get("description"));
 
+        var boardId = (Integer) payload.get("boardId");
         var taskStatusId = (Integer) payload.get("taskStatusId");
+        newTask.setBoardId(Long.valueOf(boardId));
+        newTask.setTaskStatusId(Long.valueOf(taskStatusId));
 
         newTask.setCreatedBy(loggedInUserId);
         newTask.setActive(true);
@@ -67,10 +89,6 @@ public class TaskService {
         newTask.setCreatedOn(Timestamp.from(Instant.now()));
         newTask.setLastChangeBy(loggedInUserId);
         newTask.setLastChangeOn(Timestamp.from(Instant.now()));
-
-        //TODO: temporary hardcode
-        newTask.setBoardId(1L);
-        newTask.setTaskStatusId(Long.valueOf(taskStatusId));
 
         TaskEntity savedEntity = taskRepository.save(newTask);
 

@@ -5,6 +5,7 @@ import {Board, Task, TaskStatus} from 'src/app/interfaces/schema.model'
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {EditTaskComponent} from '../edit-task/edit-task.component';
 import {DeleteTaskComponent} from '../delete-task/delete-task.component';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
@@ -13,13 +14,24 @@ import {DeleteTaskComponent} from '../delete-task/delete-task.component';
 })
 export class DashboardComponent {
 
-  boards: Board[] = [];
 
-  constructor(private _boardService: BoardService, private _dialog: MatDialog) {
-    this._boardService.getBoards().subscribe(res => {
+  boards: Board[] = [];
+  boardId: string = '';
+
+  constructor(private _boardService: BoardService, private _dialog: MatDialog, private activatedRoute: ActivatedRoute) {
+
+    this.activatedRoute.queryParams.subscribe(
+      params => {
+        this.boardId = params['boardId'];
+      }
+    )
+
+    this._boardService.getBoardDetail(this.boardId).subscribe(res => {
       this.boards = res;
     });
+
   }
+
 
   taskStatusIds(boardIndex): string[] {
     return this.boards[boardIndex].taskStatuses.map(taskStatus => taskStatus.id.toString());

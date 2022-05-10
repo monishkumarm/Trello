@@ -26,6 +26,12 @@ public class TaskStatusEntity {
     @JoinColumn(name = "BoardId", referencedColumnName = "Id", insertable = false, updatable = false, nullable = false)
     private BoardEntity boardByBoardId;
 
+
+    public TaskStatusEntity()
+    {
+    }
+
+
     public Long getId() {
         return id;
     }

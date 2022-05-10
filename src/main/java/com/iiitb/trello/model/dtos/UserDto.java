@@ -8,14 +8,13 @@ public class UserDto implements Serializable {
     private final String fullName;
     private final String email;
     private final Boolean isActive;
-    private final Timestamp createdOn;
+    private Timestamp createdOn;
 
-    public UserDto(Long id, String fullName, String email, Boolean isActive, Timestamp createdOn) {
+    public UserDto(Long id, String fullName, String email, Boolean isActive) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
         this.isActive = isActive;
-        this.createdOn = createdOn;
     }
 
     public Long getId() {

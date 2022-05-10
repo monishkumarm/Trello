@@ -38,6 +38,7 @@ import {TaskComponent} from './components/task/task.component';
 import {EditTaskComponent} from './components/edit-task/edit-task.component';
 import {DeleteTaskComponent} from './components/delete-task/delete-task.component';
 import {SignupComponent} from './components/signup/signup.component';
+import {MainPageComponent} from './components/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {SignupComponent} from './components/signup/signup.component';
     TaskComponent,
     EditTaskComponent,
     DeleteTaskComponent,
-    SignupComponent
+    SignupComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
