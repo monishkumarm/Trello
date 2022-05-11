@@ -25,15 +25,15 @@ public class TaskController {
 
     @RequestMapping(value = "/getBoardsAll", method = RequestMethod.GET)
     public ResponseEntity<List<BoardDto>> getAllBoards() {
-        // Long loggedInUserId = getLoggedInUserId();
-        var boards = taskService.getAllBoards();
+        var loggedInUserId = getLoggedInUserId();
+        var boards = taskService.getAllBoards(loggedInUserId);
         return new ResponseEntity<>(boards, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/getBoardDetail/{boardId}", method = RequestMethod.GET)
     public ResponseEntity<List<BoardDto>> getBoardDetail(@PathVariable Long boardId) {
         var loggedInUserId = getLoggedInUserId();
-        var board = taskService.getBoardDetail(boardId);
+        var board = taskService.getBoardDetail(boardId, loggedInUserId);
         var boards = new ArrayList<BoardDto>();
         boards.add(board);
         return new ResponseEntity<>(boards, HttpStatus.OK);
