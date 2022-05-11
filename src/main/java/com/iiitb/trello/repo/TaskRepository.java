@@ -12,15 +12,6 @@ import java.util.List;
 
 @Repository
 public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
-    @Query(value = "SELECT " +
-            "new com.iiitb.trello.model.dtos.TaskDto(" +
-            "t.id, " +
-            "t.taskStatusId, " +
-            "t.name, " +
-            "t.description) " +
-            "FROM " +
-            "TaskEntity AS t")
-    List<TaskDto> findTasks();
 
     @Query(value = "SELECT " +
             "new com.iiitb.trello.model.dtos.TaskDto(" +
@@ -30,19 +21,12 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
             "t.description) " +
             "FROM " +
             "TaskEntity AS t " +
-            "WHERE t.boardId = ?1")
-    List<TaskDto> findTasksByBoardId(Long boardId);
-
-    @Query(value = "SELECT " +
-            "new com.iiitb.trello.model.dtos.TaskStatusDto(" +
-            "ts.id, " +
-            "ts.boardId, " +
-            "ts.name, " +
-            "ts.isActive)" +
-            "FROM " +
-            "TaskStatusEntity AS ts")
-    List<TaskStatusDto> findTaskStatuses();
-
+            "INNER JOIN BoardEntity AS b ON t.boardId = b.id " +
+            "INNER JOIN UserPermissionBoardEntity AS upb ON b.id = upb.boardId " +
+            "WHERE t.boardId = ?1 " +
+            "AND upb.userId = ?2 " +
+            "AND upb.canView = true")
+    List<TaskDto> findTasksByBoardId(Long boardId, Long loggedInUserId);
 
     @Query(value = "SELECT " +
             "new com.iiitb.trello.model.dtos.TaskStatusDto(" +
@@ -52,15 +36,23 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
             "ts.isActive)" +
             "FROM " +
             "TaskStatusEntity AS ts " +
-            "WHERE ts.boardId = ?1")
-    List<TaskStatusDto> findTaskStatusesByBoardId(Long boardId);
+            "INNER JOIN BoardEntity AS b ON ts.boardId = b.id " +
+            "INNER JOIN UserPermissionBoardEntity AS upb ON b.id = upb.boardId " +
+            "WHERE ts.boardId = ?1 " +
+            "AND upb.userId = ?2 " +
+            "AND upb.canView = true")
+    List<TaskStatusDto> findTaskStatusesByBoardId(Long boardId, Long loggedInUserId);
 
     @Query(value = "SELECT " +
             "new com.iiitb.trello.model.dtos.BoardDto(" +
             "b.id, " +
             "b.name) " +
             "FROM " +
-            "BoardEntity AS b ")
-    List<BoardDto> findBoards();
+            "BoardEntity AS b " +
+            "INNER JOIN UserPermissionBoardEntity AS upb ON b.id = upb.boardId " +
+            "WHERE " +
+            "upb.userId = ?1 " +
+            "AND upb.canView = true ")
+    List<BoardDto> findBoards(Long loggedInUserId);
 
 }

@@ -14,8 +14,11 @@ public interface BoardRepository extends JpaRepository<BoardEntity, Long> {
             "b.id, " +
             "b.name) " +
             "FROM " +
-            "BoardEntity AS b "+
+            "BoardEntity AS b " +
+            "INNER JOIN UserPermissionBoardEntity AS upb ON b.id = upb.boardId "+
             "WHERE "+
-            "b.id=?1 ")
-    BoardDto findBoardDetail(Long boardId);
+            "b.id=?1 " +
+            "AND upb.userId = ?2 " +
+            "AND upb.canView = true ")
+    BoardDto findBoardDetail(Long boardId, Long loggedInUserId);
 }

@@ -5,9 +5,11 @@ import com.iiitb.trello.model.dtos.TaskDto;
 import com.iiitb.trello.model.dtos.TaskStatusDto;
 import com.iiitb.trello.model.entities.TaskAssigneeEntity;
 import com.iiitb.trello.model.entities.TaskEntity;
+import com.iiitb.trello.model.entities.UserPermissionBoardEntity;
 import com.iiitb.trello.repo.BoardRepository;
 import com.iiitb.trello.repo.TaskAssigneeRepository;
 import com.iiitb.trello.repo.TaskRepository;
+import com.iiitb.trello.repo.UserPermissionBoardRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -21,24 +23,22 @@ public class TaskService {
     private final TaskRepository taskRepository;
     private final TaskAssigneeRepository taskAssigneeRepository;
     private final BoardRepository boardRepository;
+    private final UserPermissionBoardRepository userPermissionBoardRepository;
 
-    public TaskService(TaskRepository taskRepository, TaskAssigneeRepository taskAssigneeRepository, BoardRepository boardRepository) {
+    public TaskService(TaskRepository taskRepository, TaskAssigneeRepository taskAssigneeRepository, BoardRepository boardRepository, UserPermissionBoardRepository userPermissionBoardRepository) {
         this.taskRepository = taskRepository;
         this.taskAssigneeRepository = taskAssigneeRepository;
         this.boardRepository = boardRepository;
+        this.userPermissionBoardRepository = userPermissionBoardRepository;
     }
 
-    public List<TaskDto> getTasks() {
-        return taskRepository.findTasks();
+    public List<TaskDto> getTasksByBoardId(Long boardId, Long loggedInUserId) {
+        return taskRepository.findTasksByBoardId(boardId, loggedInUserId);
     }
 
-    public List<TaskDto> getTasksByBoardId(Long boardId) {
-        return taskRepository.findTasksByBoardId(boardId);
-    }
-
-    public List<TaskStatusDto> getTaskStatuses() {
-        var tasks = getTasks();
-        var taskStatuses = taskRepository.findTaskStatuses();
+    public List<TaskStatusDto> getTaskStatusesByBoard(Long boardId, Long loggedInUserId) {
+        var tasks = getTasksByBoardId(boardId, loggedInUserId);
+        var taskStatuses = taskRepository.findTaskStatusesByBoardId(boardId, loggedInUserId);
 
         for (var taskStatus : taskStatuses) {
             var tasksStream = tasks.stream().filter((taskDto -> Objects.equals(taskDto.getTaskStatusId(), taskStatus.getId())));
@@ -48,28 +48,13 @@ public class TaskService {
         return taskStatuses;
     }
 
-    public List<TaskStatusDto> getTaskStatusesByBoard(Long boardId) {
-        var tasks = getTasksByBoardId(boardId);
-        var taskStatuses = taskRepository.findTaskStatusesByBoardId(boardId);
-
-        for (var taskStatus : taskStatuses) {
-            var tasksStream = tasks.stream().filter((taskDto -> Objects.equals(taskDto.getTaskStatusId(), taskStatus.getId())));
-            taskStatus.tasks = tasksStream.collect(Collectors.toList());
-        }
-
-        return taskStatuses;
+    public List<BoardDto> getAllBoards(Long loggedInUserId) {
+        return taskRepository.findBoards(loggedInUserId);
     }
 
-
-    public List<BoardDto> getAllBoards() {
-        var boards = taskRepository.findBoards();
-        return boards;
-    }
-
-
-    public BoardDto getBoardDetail(Long boardId) {
-        var board = boardRepository.findBoardDetail(boardId);
-        board.taskStatuses = getTaskStatusesByBoard(boardId);
+    public BoardDto getBoardDetail(Long boardId, Long loggedInUserId) {
+        var board = boardRepository.findBoardDetail(boardId, loggedInUserId);
+        board.taskStatuses = getTaskStatusesByBoard(boardId, loggedInUserId);
         return board;
     }
 
@@ -99,6 +84,19 @@ public class TaskService {
             taskAssigneeEntity.setTaskId(savedEntity.getId());
             taskAssigneeEntity.setUserId(Long.valueOf(assigneeId));
             taskAssigneeRepository.save(taskAssigneeEntity);
+
+            var doesPermissionExist = userPermissionBoardRepository.existsByUserIdAndBoardId(Long.valueOf(assigneeId), Long.valueOf(boardId));
+
+            if (!doesPermissionExist) {
+                var userPermissionBoardEntity = new UserPermissionBoardEntity();
+                userPermissionBoardEntity.setUserId(Long.valueOf(assigneeId));
+                userPermissionBoardEntity.setBoardId(Long.valueOf(boardId));
+                userPermissionBoardEntity.setCanView(true);
+                userPermissionBoardEntity.setCanModify(true);
+                userPermissionBoardEntity.setCanDelete(true);
+
+                userPermissionBoardRepository.save(userPermissionBoardEntity);
+            }
         }
 
         return taskRepository.findById(newTask.getId());
