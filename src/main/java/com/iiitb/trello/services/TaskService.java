@@ -67,7 +67,7 @@ public class TaskService {
         var taskStatusId = (Integer) payload.get("taskStatusId");
         newTask.setBoardId(Long.valueOf(boardId));
         newTask.setTaskStatusId(Long.valueOf(taskStatusId));
-
+        newTask.setImage((String) payload.get("image"));
         newTask.setCreatedBy(loggedInUserId);
         newTask.setActive(true);
         newTask.setCreatedBy(loggedInUserId);

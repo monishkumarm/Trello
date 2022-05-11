@@ -18,7 +18,8 @@ public interface TaskRepository extends JpaRepository<TaskEntity, Long> {
             "t.id, " +
             "t.taskStatusId, " +
             "t.name, " +
-            "t.description) " +
+            "t.description, " +
+            "t.image) " +
             "FROM " +
             "TaskEntity AS t " +
             "INNER JOIN BoardEntity AS b ON t.boardId = b.id " +

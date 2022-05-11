@@ -7,12 +7,14 @@ public class TaskDto implements Serializable {
     private final Long taskStatusId;
     private final String name;
     private final String description;
+    private final String image;
 
-    public TaskDto(Long id, Long taskStatusId, String name, String description){
+    public TaskDto(Long id, Long taskStatusId, String name, String description, String image){
         this.id = id;
         this.taskStatusId = taskStatusId;
         this.name = name;
         this.description = description;
+        this.image = image;
     }
 
     public Long getId() {
@@ -30,5 +32,9 @@ public class TaskDto implements Serializable {
 
     public Long getTaskStatusId() {
         return taskStatusId;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

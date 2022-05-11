@@ -1,4 +1,4 @@
-import {Component, OnInit, Inject, Optional} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef, MatDialog} from '@angular/material/dialog';
 import {Task} from 'src/app/interfaces/schema.model';
@@ -35,7 +35,7 @@ export class EditTaskComponent implements OnInit {
       description: [task && task.description ? task.description : '', Validators.required],
       taskStatus: [task && task.taskStatus ? task.taskStatus : ''],
       taskStatusId: [task && task.taskStatusId ? task.taskStatusId : '', Validators.required],
-      speaker: [task && task.speaker ? task.speaker : '', Validators.required],
+      speaker: [task && task.speaker ? task.speaker : ''],
       image: [task && task.image ? task.image : ''],
       issueType: [task && task.issueType ? task.issueType : ''],
       createdAt: [task && task.createdOn ? task.createdOn : new Date()],

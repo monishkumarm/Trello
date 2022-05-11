@@ -27,6 +27,9 @@ public class TaskEntity {
     @Column(name = "TaskStatusId")
     private Long taskStatusId;
     @Basic
+    @Column(name = "Image")
+    private String image;
+    @Basic
     @Column(name = "IsActive")
     private Boolean isActive;
     @Basic
@@ -100,6 +103,14 @@ public class TaskEntity {
 
     public void setTaskStatusId(Long taskStatusId) {
         this.taskStatusId = taskStatusId;
+    }
+
+    public String getImage(){
+        return image;
+    }
+
+    public void setImage(String image){
+        this.image = image;
     }
 
     public Boolean getActive() {
