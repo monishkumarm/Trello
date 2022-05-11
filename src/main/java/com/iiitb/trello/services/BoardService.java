@@ -3,8 +3,10 @@ package com.iiitb.trello.services;
 import com.iiitb.trello.model.CustomUserDetails;
 import com.iiitb.trello.model.entities.BoardEntity;
 import com.iiitb.trello.model.entities.TaskStatusEntity;
+import com.iiitb.trello.model.entities.UserPermissionBoardEntity;
 import com.iiitb.trello.repo.BoardRepository;
 import com.iiitb.trello.repo.TaskStatusRepository;
+import com.iiitb.trello.repo.UserPermissionBoardRepository;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +20,12 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final TaskStatusRepository taskStatusRepository;
 
-    public BoardService(BoardRepository BoardRepository, TaskStatusRepository taskStatusRepository) {
+    private final UserPermissionBoardRepository userPermissionBoardRepository;
+
+    public BoardService(BoardRepository BoardRepository, TaskStatusRepository taskStatusRepository, UserPermissionBoardRepository userPermissionBoardRepository) {
         this.boardRepository = BoardRepository;
         this.taskStatusRepository = taskStatusRepository;
+        this.userPermissionBoardRepository = userPermissionBoardRepository;
     }
 
     public Optional<BoardEntity> createBoard(BoardEntity newBoard) {
@@ -57,6 +62,15 @@ public class BoardService {
         taskStatus4.setBoardId(newBoard.getId());
         taskStatus4.setName("Rejected");
         taskStatusRepository.save(taskStatus4);
+
+        var userPermissionBoardEntity = new UserPermissionBoardEntity();
+        userPermissionBoardEntity.setUserId(newBoard.getCreatedBy());
+        userPermissionBoardEntity.setBoardId(newBoard.getId());
+        userPermissionBoardEntity.setCanView(true);
+        userPermissionBoardEntity.setCanModify(true);
+        userPermissionBoardEntity.setCanDelete(true);
+
+        userPermissionBoardRepository.save(userPermissionBoardEntity);
 
         return boardRepository.findById(newBoard.getId());
     }
