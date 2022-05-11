@@ -1,0 +1,48 @@
+version: '3.3'
+
+services:
+  trellodatabase:
+    image: mysql
+    container_name: trellodatabase
+    environment:
+      MYSQL_ROOT_PASSWORD: monish
+      MYSQL_DATABASE: Trello
+      MYSQL_USER: monish
+      MYSQL_PASSWORD: monish
+    restart: always
+    ports:
+      - 3307:3306
+    volumes:
+      - trellodatabasedata:/var/lib/mysql
+    networks:
+      - trellobackendnetwork
+
+  trellospringboot:
+    depends_on:
+      - trellodatabase
+    restart: on-failure
+    image: monishkumarm/trello:latest
+    container_name: trellospringboot
+    ports:
+      - 5050:5050
+    networks:
+      - trellobackendnetwork
+      - trellofrontendnetwork
+
+  trellowebapp:
+    image: monishkumarm/trellowebapp:latest
+    container_name: trellowebapp
+    ports:
+      - 4200:80
+    depends_on:
+      - trellospringboot
+    networks:
+      - trellofrontendnetwork
+
+
+volumes:
+  trellodatabasedata:
+
+networks:
+  trellobackendnetwork:
+  trellofrontendnetwork:
